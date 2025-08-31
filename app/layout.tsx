@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "ExplorableScience | Explore Science Through Interactive Simulations",
     description: "Discover and learn science concepts interactively with explorable articles and hands-on simulations covering physics, technology, and more.",
     keywords: [
-        "science", "physics", "education", "explorable", "explorables", "interactive", "article",
+        "science", "physics", "educational", "explorable", "explorables", "explorable-explanations", "interactive", "article",
         "articles", "simulation", "simulations", "learning", "research", "experiments", "visualization", "data", "technology"
     ],
     authors: [{ name: "ExplorableScience", url: "https://explorablescience.com" }],
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
         images: [
             {
                 url: "https://explorablescience.com/og-image.png",
-                width: 1200,
-                height: 630,
+                width: 1000,
+                height: 1000,
                 alt: "ExplorableScience - Explore Science Through Interactive Simulations"
             }
         ],
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         title: "ExplorableScience | Explore Science Through Interactive Simulations",
         description: "Discover and learn science concepts interactively with explorable articles and hands-on simulations covering physics, technology, and more.",
         site: "https://explorablescience.com",
-        creator: "@ExplorableSci",
+        creator: "ExplorableScience",
         images: [
             "https://explorablescience.com/og-image.png"
         ]
