@@ -1,27 +1,61 @@
 {
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
+    /* See https://lecoints.fr/creation-fichier-tsconfig-json/ */
+    "compilerOptions": {
+        /* Projects */
+        "incremental": true,
+
+        /* Language and Environment */
+        "target": "es5",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "jsx": "preserve",
+
+        /* Modules */
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        },
+        "resolveJsonModule": true,
+
+        /* JavaScript Support */
+        "allowJs": true,
+        "checkJs": true,
+
+        /* Emit */
+        "noEmit": true,
+
+        /* Interop Constraints */
+        "isolatedModules": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+
+        /* Type Checking */
+        "strict": true,
+
+        /* Completeness */
+        "skipLibCheck": true,
+
+        /* Plugins */
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+    },
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts"
     ],
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+    "exclude": [
+        "node_modules"
+    ]
 }
