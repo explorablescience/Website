@@ -219,10 +219,6 @@ function Canvas(props: { width: number, height: number, instance: CanvasElement,
     useEffect(() => {
         // Get canvas and context
         const canvas = canvasRef.current;
-        if (canvas) {
-            canvas.width = props.width;
-            canvas.height = props.height;
-        }
         const context = canvas?.getContext('2d');
         if (!context) {
             logger.error('Could not get 2d canvas context.');
@@ -259,7 +255,7 @@ function Canvas(props: { width: number, height: number, instance: CanvasElement,
 
     return (
         <ErrorBoundary fallback={props.errorFallback ?? <></>}>
-            <canvas ref={canvasRef} width={props.width} height={props.height} className={styles.canvas} />
+            <canvas ref={canvasRef} width={props.width} height={props.height} />
         </ErrorBoundary>
     );
 }
@@ -270,7 +266,7 @@ export default function HeaderAnimation() {
     let [height, setHeight] = React.useState(0);
     useEffect(() => {
         setWidth(window.document.body.clientWidth);
-        setHeight(window.innerHeight);
+        setHeight(1.1 * window.innerHeight);
     }, []);
 
     // Create simulation

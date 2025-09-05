@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 :root {
     --color-green: #4aa96e;
     --color-background-light: #171f2d;
     --color-background-dark: #0d0d0d;
 }
-
-/* @media (prefers-color-scheme: dark) {
-} */

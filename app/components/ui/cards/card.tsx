@@ -2,9 +2,9 @@
 
 import Image from 'next/image'
 import styles from './card.module.css'
-import { raleway, montserrat } from '../../fonts';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { contentFont, titleFont } from '@/app/fonts';
 
 /**
  * Card component
@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from 'react';
  * @param props.color Color of the title
  */
 export default function Card(props: {
-    alignText: 'right' | 'left', title: string, description: string, image: string, link: string, keyword: string, year: string, color: string
+    title: string, description: string, image: string, link: string, alignText: 'right' | 'left', keyword: string, year: string, color: string
 }) {
     // Note: Hardcoded color
     const [color, setColor] = useState(props.color);
@@ -29,24 +29,24 @@ export default function Card(props: {
         }
     }, []);
 
-    // const image = <div className={styles.image}>
-    //     <Image src={props.image} alt={props.title + ' illustration'} width={400} height={400} onClick={() => window.location.replace(props.link)} />
-    // </div>;
+    const image = <div className={styles.image}>
+        <Image src={props.image} alt={props.title + ' illustration'} width={400} height={400} onClick={() => window.location.replace(props.link)} />
+    </div>;
 
-    const content = <div className={styles.text + ' ' + (props.alignText == 'right' ? styles.textRight : styles.textLeft)}>
-        <div className={styles.title + ' ' + montserrat}>
+    const content = <div className={`${styles.text} ${props.alignText == 'right' ? styles.textRight : styles.textLeft}`}>
+        <div className={`${styles.title} ${titleFont.className}`} style={{ borderColor: color }}>
             <Link href={props.link} style={{ color: color }}>{props.title}</Link>
         </div>
         <div className={styles.description}>
             <p className={styles.descriptionText} dangerouslySetInnerHTML={{ __html: props.description }}></p>
-            <p className={styles.label + ' ' + raleway}>{props.year} • {props.keyword}</p>
+            <p className={`${styles.label} ${contentFont.className}`}>{props.year} • {props.keyword}</p>
         </div>
     </div>;
 
     return (
-        <div className={styles.card + ' ' + (props.alignText == 'right' ? styles.cardRight : styles.cardLeft)}>
-            {/* {props.alignText == 'right' ? image : content}
-            {props.alignText == 'right' ? content : image} */}
+        <div className={`${styles.card} ${props.alignText == 'right' ? styles.cardRight : styles.cardLeft}`}>
+            {props.alignText == 'right' ? image : content}
+            {props.alignText == 'right' ? content : image}
         </div>
     )
 }

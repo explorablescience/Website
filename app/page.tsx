@@ -1,5 +1,8 @@
 'use client'
 
+import ArticlesList from './(home)/articles/articles'
+import SimulationsList from './(home)/simulations/simulations'
+import Footer from './components/footer/footer'
 import Header from './components/header/header'
 import HeaderAnimation from './components/header/header_animation'
 import Button from './components/ui/buttons/button'
@@ -9,14 +12,14 @@ export default function Home() {
     return <>
         <HeaderAnimation />
 
-        <Header showScrollButton>
+        <Header style={{ height: '115vh' }} showScrollButton>
             <div className={styles.buttons}>
                 <Button content='Articles' action={() => {
                     window.scrollTo({
                         top: document.getElementById('articles')?.offsetTop, behavior: 'smooth'
                     })
                 }} size='standard' />
-                <Button content='Simulations' action={() => {
+                <Button content='&nbsp;&nbsp;&nbsp;Simulations&nbsp;&nbsp;&nbsp;' action={() => {
                     window.scrollTo({
                         top: document.getElementById('simulations')?.offsetTop, behavior: 'smooth'
                     })
@@ -25,9 +28,9 @@ export default function Home() {
             </div>
         </Header>
 
-        {/* <ArticlesList count={2} />
-        <SimulationsList count={2} /> */}
+        <ArticlesList count={4} />
+        <SimulationsList count={4} />
 
-        {/* <Footer /> */}
+        <Footer />
     </>
 }
