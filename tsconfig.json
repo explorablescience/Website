@@ -26,6 +26,7 @@
         /* JavaScript Support */
         "allowJs": true,
         "checkJs": true,
+        "allowImportingTsExtensions": true,
 
         /* Emit */
         "noEmit": true,
@@ -50,10 +51,11 @@
         ],
     },
     "include": [
+        "new-types.d.ts",
         "next-env.d.ts",
+        ".next/types/**/*.ts",
         "**/*.ts",
-        "**/*.tsx",
-        ".next/types/**/*.ts"
+        "**/*.tsx"
     ],
     "exclude": [
         "node_modules"

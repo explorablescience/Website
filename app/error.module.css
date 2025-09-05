@@ -1,0 +1,19 @@
+.content {
+    text-align: center;
+    font-size: 27px;
+    font-weight: 200;
+    margin: 35px 0;
+}
+
+.buttons {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+@media (max-width: 570px) {
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

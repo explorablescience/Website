@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import styles from './layout.module.css'
+import { inter } from "./fonts.ts";
 import "./globals.css";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
     title: "ExplorableScience | Explore Science Through Interactive Simulations",
@@ -27,7 +18,7 @@ export const metadata: Metadata = {
         siteName: "ExplorableScience",
         images: [
             {
-                url: "https://explorablescience.com/og-image.png",
+                url: "https://explorablescience.com/logo.png",
                 width: 1000,
                 height: 1000,
                 alt: "ExplorableScience - Explore Science Through Interactive Simulations"
@@ -43,7 +34,7 @@ export const metadata: Metadata = {
         site: "https://explorablescience.com",
         creator: "ExplorableScience",
         images: [
-            "https://explorablescience.com/og-image.png"
+            "https://explorablescience.com/logo.png"
         ]
     },
     robots: "index, follow",
@@ -63,8 +54,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-            <body>{children}</body>
+        <html lang="en" className={`${inter.className} antialiased`}>
+            <body className={styles.body}>{children}</body>
         </html>
     );
 }
