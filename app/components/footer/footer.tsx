@@ -10,7 +10,7 @@ export default function Footer() {
             <div className={styles.content}>
                 <div className={styles.footerContent}>
                     <div className={styles.icons}>
-                        <Link href="https://twitter.com/MecanicaSci" className={styles.twitter}>
+                        <Link href="https://twitter.com/ExplorableSci" className={styles.twitter}>
                             <Image
                                 src="/icons/twitter.svg"
                                 alt="Twitter of ExplorableScience"
@@ -18,7 +18,7 @@ export default function Footer() {
                                 height={30} />
                         </Link>
 
-                        <Link href="https://github.com/mecanicascience/" className={styles.github}>
+                        <Link href="https://github.com/explorablescience/" className={styles.github}>
                             <Image
                                 src="/icons/github.svg"
                                 alt="Github of ExplorableScience"
@@ -38,7 +38,7 @@ export default function Footer() {
                     <div className={styles.endText}>
                         <p>©{new Date().getFullYear()} ExplorableScience</p>
                         <p className={styles.separator}>|</p>
-                        <p><a href="mailto:mecanicascience@gmail.com">mecanicascience@gmail.com</a></p>
+                        <p><a href="mailto:explorablesci@gmail.com">explorablesci@gmail.com</a></p>
                         <p className={styles.separator}>|</p>
                         <p>Version 5.0</p>
                     </div>

@@ -28,8 +28,8 @@ export default function Home() {
             </div>
         </Header>
 
-        <ArticlesList count={4} />
-        <SimulationsList count={4} />
+        <ArticlesList count={2} />
+        <SimulationsList count={2} />
 
         <Footer />
     </>
