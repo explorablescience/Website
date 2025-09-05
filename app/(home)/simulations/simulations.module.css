@@ -90,3 +90,9 @@
 .more > a > div > span {
     padding-top: 5px;
 }
+
+.loadingText{
+    text-align: center;
+    font-size: 25px;
+    margin: 50px auto 55vh;
+}
