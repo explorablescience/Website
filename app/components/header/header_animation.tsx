@@ -260,13 +260,13 @@ function Canvas(props: { width: number, height: number, instance: CanvasElement,
     );
 }
 
-export default function HeaderAnimation() {
+export default function HeaderAnimation({ small }: { small?: boolean }) {
     // Get window size
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     useEffect(() => {
         setWidth(window.document.body.clientWidth);
-        setHeight(1.1 * window.innerHeight);
+        setHeight(window.innerHeight * (small ? 1.0 : 1.1));
     }, []);
 
     // Create simulation

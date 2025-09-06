@@ -17,7 +17,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
             </head>
 
             <body>
-                <HeaderAnimation />
+                <HeaderAnimation small />
 
                 <Header>
                     <div className={styles.content}>

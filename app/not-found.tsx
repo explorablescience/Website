@@ -11,7 +11,7 @@ export default function NotFound() {
     logger.error("Page not found");
 
     return <>
-        <HeaderAnimation />
+        <HeaderAnimation small />
 
         <Header>
             <div className={`${styles.content} ${inter.className}`}>

@@ -10,7 +10,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
     logger.error(error);
 
     return <>
-        <HeaderAnimation />
+        <HeaderAnimation small />
 
         <Header>
             <div className={styles.content}>
