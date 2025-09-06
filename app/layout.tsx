@@ -4,7 +4,10 @@ import { inter } from "./fonts.ts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "ExplorableScience | Explore Science Through Interactive Simulations",
+    title: {
+        template: '%s | ExplorableScience',
+        default: 'ExplorableScience | Explore Science Through Interactive Simulations'
+    },
     description: "Discover and learn science concepts interactively with explorable articles and hands-on simulations covering physics, technology, and more.",
     keywords: [
         "science", "physics", "educational", "explorable", "explorables", "explorable-explanations", "interactive", "article",

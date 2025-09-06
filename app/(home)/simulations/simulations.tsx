@@ -4,9 +4,9 @@ import Button from '@/app/components/ui/buttons/button';
 import styles from './simulations.module.css'
 import Card from '@/app/components/ui/cards/card';
 import { contentFont, titleFont } from '@/app/fonts';
-import { getSimulations } from '@/app/api/database/app';
 import { JSX, useEffect, useState } from 'react';
 import React from 'react';
+import { getSimulationsByPinned, getSimulationsByYear } from '@/app/api/database/simulations';
 
 export default function SimulationsList(props: { count?: number, inverted?: boolean }) {
     const inverted = props.inverted ?? false;
@@ -15,22 +15,21 @@ export default function SimulationsList(props: { count?: number, inverted?: bool
     const [cards, setCards] = useState<JSX.Element[]>([]);
     useEffect(() => {
         async function fetchData() {
-            // Get list of articles
-            const allSimulations = await getSimulations();
-            const simulations = props.count ? allSimulations.slice(0, props.count) : allSimulations;
+            // Get list of simulations
+            const simulations = moreButton ? await getSimulationsByPinned(props.count) : await getSimulationsByYear(props.count);
 
             // Create cards
-            const cards = simulations.map((article, index) => {
-                const formatDescription = article.description.replace(/<c>(.*?)<\/c>/g, '<span class="colorNote">$1</span>');
+            const cards = simulations.map((sim, index) => {
+                const formatDescription = sim.description.replace(/<c>(.*?)<\/c>/g, '<span class="colorNote">$1</span>');
                 return (
                     <Card
                         alignText={index % 2 == 0 ? 'right' : 'left'}
-                        title={article.title}
+                        title={sim.title}
                         description={formatDescription}
-                        image={article.image}
-                        link={article.link}
-                        keyword={article.keyword}
-                        year={article.year}
+                        image={sim.image.url}
+                        link={`/simulations/${sim.id}`}
+                        keyword={sim.keyword}
+                        year={sim.year}
                         color={inverted ? "#21365b" : "#eee"}
                         key={index} />
                 )
@@ -38,7 +37,7 @@ export default function SimulationsList(props: { count?: number, inverted?: bool
             setCards(cards);
         }
         fetchData();
-    }, [inverted, props.count, props.inverted]);
+    }, [inverted, moreButton, props.count, props.inverted]);
 
     return (
         <section id="simulations" className={`${inverted ? '' : styles.simulations}`}>
