@@ -267,7 +267,7 @@ export default function HeaderAnimation({ small }: { small?: boolean }) {
     useEffect(() => {
         setWidth(window.document.body.clientWidth);
         setHeight(window.innerHeight * (small ? 1.0 : 1.1));
-    }, []);
+    }, [small]);
 
     // Create simulation
     const particlesCount = width < 600 ? 150 : 300;
