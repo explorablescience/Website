@@ -56,6 +56,9 @@
 @media (min-width: 1750px) {
     .navbarBackground { height: 131px; }
 }
+.navbarBackgroundSmall {
+    height: 58px !important;
+}
 
 .links > a {
     color: white;

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './navbar.module.css'
 
-export default function Navbar() {
+export default function Navbar({small}: { small?: boolean }) {
     return <>
         <nav className={styles.nav}>
             <div className={styles.navbar}>
@@ -28,7 +28,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className={styles.navbarBackground}>
+            <div className={`${styles.navbarBackground} ${small ? styles.navbarBackgroundSmall : ''}`}>
             </div>
         </nav>
     </>
