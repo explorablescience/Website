@@ -10,3 +10,8 @@ html {
     --color-background-light: #171f2d;
     --color-background-dark: #0d0d0d;
 }
+
+.colorNote {
+    color: var(--color-green);
+}
+

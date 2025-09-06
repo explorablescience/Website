@@ -3,6 +3,9 @@ import Footer from "@/app/components/footer/footer"
 import Navbar from "@/app/components/header/navbar"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import styles from './page.module.css'
+import Button from "@/app/components/ui/buttons/button"
+import { contentFont, titleFont } from "@/app/fonts"
 
 type Props = {
     params: Promise<{ sim_id: string }>
@@ -47,16 +50,25 @@ export default async function Page({ params }: Props) {
     if (!sim) {
         notFound()
     }
+    const desc = sim.description.replace(/<c>(.*?)<\/c>/g, '<span class="colorNote">$1</span>');
 
     return <>
         <Navbar small />
 
-        <div style={{ margin: '100px auto' }}>
-            <h1>{sim.title}</h1>
-            <p>{sim.description}</p>
-            <iframe src={"https://simulations-one.vercel.app/" + sim.link} style={{ width: '100%', height: '80vh', border: 'none' }} title={sim.title} />
+        <div className={styles.simulation_container}>
+            <div className={styles.simulation_header}>
+                <iframe src={"https://simulations.explorablescience.com/" + sim.link} className={styles.simulation_iframe} title={sim.title} />
+            </div>
+            <div className={styles.simulation_content}>
+                <h1 className={`${styles.simulation_title} ${titleFont}`}>{sim.title}</h1>
+                <p className={`${styles.simulation_description} ${contentFont}`} dangerouslySetInnerHTML={{ __html: desc }}></p>
+                <div className={styles.simulation_links}>
+                    <Button content="Fullscreen" link={"https://simulations.explorablescience.com/" + sim.link} size="standard" />
+                    <Button content="Source Code" link={sim.github} size="standard" />
+                </div>
+            </div>
         </div>
-        
+
         <Footer />
     </>
 }

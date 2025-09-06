@@ -9,6 +9,7 @@ export type SimulationData = {
     description: string;
     image: { url: string; width: number; height: number; alt: string };
     link: string;
+    github: string;
     keyword: string;
     year: string;
     pinned: boolean;
@@ -35,6 +36,7 @@ const getSimulations = cache(async function () {
                 alt: 'Heat equation',
             },
             link: '/2022/ThermalConduction/',
+            github: 'https://github.com/ExplorableScience/Simulations/tree/main/2022/HeatEquation',
             keyword: 'Thermodynamics',
             year: '2022',
             pinned: false
@@ -49,8 +51,9 @@ const getSimulations = cache(async function () {
                 height: 600,
                 alt: 'Ising model',
             },
-            keyword: 'Statistical Physics',
             link: '/2022/IsingModel/',
+            github: 'https://github.com/ExplorableScience/Simulations/tree/main/2022/IsingModel',
+            keyword: 'Statistical Physics',
             year: '2022',
             pinned: true
         },
@@ -64,8 +67,9 @@ const getSimulations = cache(async function () {
                 height: 600,
                 alt: 'Hydrogen atom',
             },
-            keyword: 'Quantum Mechanics',
             link: '/2023/HydrogenAtom/',
+            github: 'https://github.com/ExplorableScience/Simulations/tree/main/2023/HydrogenAtom',
+            keyword: 'Quantum Mechanics',
             year: '2023',
             pinned: false
         },
@@ -79,8 +83,9 @@ const getSimulations = cache(async function () {
                 height: 600,
                 alt: 'Electrostatic Field',
             },
-            keyword: 'Electromagnetism',
             link: '/2021/ElectrostaticField/',
+            github: 'https://github.com/ExplorableScience/Simulations/tree/main/2021/ElectrostaticField',
+            keyword: 'Electromagnetism',
             year: '2021',
             pinned: false
         }

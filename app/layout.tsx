@@ -13,7 +13,7 @@ export const metadata: Metadata = {
         "science", "physics", "educational", "explorable", "explorables", "explorable-explanations", "interactive", "article",
         "articles", "simulation", "simulations", "learning", "research", "experiments", "visualization", "data", "technology"
     ],
-    authors: [{ name: "ExplorableScience", url: "https://explorablescience.com" }],
+    authors: [{ name: "ExplorableScience", url: "https://www.explorablescience.com" }],
     creator: "ExplorableScience",
     publisher: "ExplorableScience",
     category: "Science",
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "ExplorableScience | Explore Science Through Interactive Simulations",
         description: "Explorable articles and interactive simulations on various scientific topics.",
-        url: "/",
+        url: "https://www.explorablescience.com/",
         siteName: "ExplorableScience",
         images: [
             {
-                url: "/imgs/logo.png",
+                url: "https://www.explorablescience.com/imgs/logo.png",
                 width: 1000,
                 height: 1000,
                 alt: "ExplorableScience - Explore Science Through Interactive Simulations"
@@ -38,17 +38,17 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "ExplorableScience | Explore Science Through Interactive Simulations",
         description: "Discover and learn science concepts interactively with explorable articles and hands-on simulations covering physics, technology, and more.",
-        site: "/",
+        site: "https://www.explorablescience.com/",
         creator: "@ExplorableSci",
         images: [
-            "https://explorablescience.com/imgs/logo.png"
+            "https://www.explorablescience.com/imgs/logo.png"
         ]
     },
     robots: "index, follow",
     alternates: {
-        canonical: "/",
+        canonical: "https://www.explorablescience.com/",
         languages: {
-            "en-US": "/"
+            "en-US": "https://www.explorablescience.com/"
         }
     }
 };
