@@ -13,7 +13,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
         <html>
             <head>
                 <title>Something went wrong!</title>
-                <link rel="icon" type="image/ico" href="/images/favicon.ico" />
+                <link rel="icon" type="image/ico" href="/imgs/favicon.ico" />
             </head>
 
             <body>
