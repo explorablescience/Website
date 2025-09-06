@@ -4,7 +4,27 @@
 }
 
 .simulation_header {
-    margin: 45px 0 0 0;
+    margin: 50px 0 0 0;
+}
+@media (min-width: 1600px) {
+    .simulation_header {
+        margin: 70px 0 0 0 !important;
+    }
+}
+@media (min-width: 1300px) {
+    .simulation_header {
+        margin: 60px 0 0 0;
+    }
+}
+@media (max-width: 1200px) {
+    .simulation_header {
+        margin: 30px 0 0 0;
+    }
+}
+@media (max-width: 700px) {
+    .simulation_header {
+        margin: 10px 0 0 0;
+    }
 }
 
 .simulation_iframe {

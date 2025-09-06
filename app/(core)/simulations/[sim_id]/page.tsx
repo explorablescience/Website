@@ -17,18 +17,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!sim) {
         return {}
     }
+    const title = `${sim.title} Simulation | ExplorableScience`
+    const desc = sim.description.replace(/<c>(.*?)<\/c>/g, '<span class="colorNote">$1</span>');
 
     return {
-        title: sim.title,
-        description: sim.description,
+        title,
+        description: desc,
         keywords: [
             "science", "physics", "educational", "explorable", "explorables", "explorable-explanations", "interactive", "article",
             "articles", "simulation", "simulations", "learning", "research", "experiments", "visualization", "data", "technology",
             sim.keyword
         ],
         openGraph: {
-            title: sim.title,
-            description: sim.description,
+            title,
+            description: desc,
             url: `/simulations/${sim.id}`,
             images: [
                 { url: sim.image.url, width: sim.image.width, height: sim.image.height, alt: sim.image.alt },
@@ -37,8 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
         twitter: {
             card: 'summary_large_image',
-            title: sim.title,
-            description: sim.description,
+            title,
+            description: desc,
             images: [sim.image]
         }
     }
