@@ -11,14 +11,18 @@ export const metadata: Metadata = {
         "articles", "simulation", "simulations", "learning", "research", "experiments", "visualization", "data", "technology"
     ],
     authors: [{ name: "ExplorableScience", url: "https://explorablescience.com" }],
+    creator: "ExplorableScience",
+    publisher: "ExplorableScience",
+    category: "Science",
+    applicationName: "ExplorableScience",
     openGraph: {
         title: "ExplorableScience | Explore Science Through Interactive Simulations",
         description: "Explorable articles and interactive simulations on various scientific topics.",
-        url: "https://explorablescience.com",
+        url: "/",
         siteName: "ExplorableScience",
         images: [
             {
-                url: "https://explorablescience.com/logo.png",
+                url: "/imgs/logo.png",
                 width: 1000,
                 height: 1000,
                 alt: "ExplorableScience - Explore Science Through Interactive Simulations"
@@ -31,21 +35,19 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "ExplorableScience | Explore Science Through Interactive Simulations",
         description: "Discover and learn science concepts interactively with explorable articles and hands-on simulations covering physics, technology, and more.",
-        site: "https://explorablescience.com",
-        creator: "ExplorableScience",
+        site: "/",
+        creator: "@ExplorableSci",
         images: [
-            "https://explorablescience.com/logo.png"
+            "https://explorablescience.com/imgs/logo.png"
         ]
     },
     robots: "index, follow",
     alternates: {
-        canonical: "https://explorablescience.com",
+        canonical: "/",
         languages: {
-            "en-US": "https://explorablescience.com"
+            "en-US": "/"
         }
-    },
-    category: "Science",
-    applicationName: "ExplorableScience"
+    }
 };
 
 export default function RootLayout({
