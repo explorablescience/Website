@@ -27,7 +27,7 @@ const getArticles = cache(async function () {
     const articles: ArticleData[] = [
         {
             id: '2022-heat_equation',
-            title: 'Heat equation',
+            title: 'General Relativity',
             description: 'The heat equation describes the temperature evolution inside materials. Using the latest GPU technologies, this simulations aim to compute this propagation considering some obstacles.',
             image: {
                 url: 'https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F10_thermal_conduction.png?alt=media',
@@ -35,7 +35,7 @@ const getArticles = cache(async function () {
                 height: 600,
                 alt: 'Heat equation',
             },
-            link: '/heat_equation/',
+            link: '/general_relativity/',
             github: 'https://github.com/ExplorableScience/Simulations/tree/main/2022/HeatEquation',
             keyword: 'Thermodynamics',
             year: '2022',

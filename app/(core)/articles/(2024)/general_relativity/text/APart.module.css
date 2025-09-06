@@ -1,0 +1,147 @@
+.landmark, .landmark-math {
+    border: solid 2px;
+    border-radius: 5px;
+    transition: color 0.15s ease-in-out;
+}
+.landmark { padding: 0 2px 0 2px; margin: 0 6px 0 6px; }
+.landmark-math { padding: 3px; margin: 0 2px 0 2px; }
+
+.landmark-math:hover, .landmark:hover {
+    color: var(--background-color);
+}
+
+.paragraph {
+    margin-top: var(--paragraph-margin);
+    margin-bottom: 40px;
+}
+@media screen and (max-width: 1340px) {
+    .paragraph {
+        margin-top: 125px;
+        margin-bottom: 30px;
+    }
+}
+
+.separator {
+    height: var(--separator-height);
+    display: inline-block;
+}
+@media screen and (max-width: 1340px) {
+    .separator {
+        height: 30px;
+    }
+}
+
+.expandable {
+    margin: 29px 13px 23px 13px;
+}
+.expandable-box {
+    border: #333333 solid 3px;
+    padding: 13px 20px 0;
+    border-radius: 11px;
+}
+.expandable-title {
+    background: #333333;
+    color: #f8f8f8;
+    text-align: center;
+    margin-bottom: -12px;
+    flex-direction: row-reverse;
+    display: flex;
+    border-radius: 6px;
+}
+.expandable-title-icon {
+    width: 45px;
+}
+.expandable-title-text {
+    flex-grow: 1;
+}
+
+.equation-overline {
+    border: solid var(--color-red) 2px;
+    padding: 9px 42px;
+    border-radius: 8px;
+    margin: 12px 18px 25px;
+    display: block;
+    text-align: center;
+}
+.equation-overline > mjx-container {
+    display: contents !important;
+}
+
+
+.blockquote, .note {
+    padding-left: 19px;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 13px 0 13px 33px;
+}
+.blockquote { border-left: 4px solid var(--color-blue); }
+.note { border-left: 4px solid var(--color-gray); }
+@media screen and (max-width: 1340px) {
+    .blockquote, .note {
+        font-size: 18px;
+    }
+}
+
+.strong {
+    font-style: italic;
+}
+
+.error {
+    padding-left: 19px;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 30px;
+    margin: 18px 0 18px 33px;
+    border-left: 4px solid var(--color-red);
+}
+@media screen and (max-width: 1340px) {
+    .error {
+        font-size: 21px;
+    }
+}
+
+
+.landmark-red {
+    border-color: var(--color-red-pale);
+    color: var(--text-color);
+    background-color: var(--color-red-pale);
+}
+.landmark-green {
+    border-color: var(--color-green-pale);
+    color: var(--text-color);
+    background-color: var(--color-green-pale);
+}
+.landmark-blue {
+    border-color: var(--color-blue-pale);
+    color: var(--text-color);
+    background-color: var(--color-blue-pale);
+}
+.landmark-gray {
+    border-color: var(--color-gray-pale);
+    color: var(--background-color);
+    background-color: var(--color-gray-pale);
+}
+.landmark-purple {
+    border-color: var(--color-purple-pale);
+    color: var(--text-color);
+    background-color: var(--color-purple-pale);
+}
+
+
+.color-red {
+    color: var(--color-red);
+}
+.color-green {
+    color: var(--color-green);
+}
+.color-blue {
+    color: var(--color-blue);
+}
+.color-gray {
+    color: var(--color-gray);
+    font-weight: bold;
+}
+.color-purple {
+    color: var(--color-purple);
+}
