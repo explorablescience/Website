@@ -4,16 +4,18 @@ import { contentFont, titleFont } from '@/app/fonts';
 import Button from '../../components/ui/buttons/button';
 import Card from '../../components/ui/cards/card';
 import styles from './articles.module.css'
-import { getArticles } from '@/app/api/database/app';
 import { JSX, useEffect, useState } from 'react';
+import { getArticlesByPinned, getArticlesByYear } from '@/app/api/database/articles';
 
 export default function ArticlesList(props: { count?: number, inverted?: boolean }) {
+    const inverted = props.inverted ?? false;
+    const moreButton = props.count ? true : false;
+
     const [cards, setCards] = useState<JSX.Element[]>([]);
         useEffect(() => {
             async function fetchData() {
                 // Get list of articles
-                const allArticles = await getArticles();
-                const articles = props.count ? allArticles.slice(0, props.count) : allArticles;
+                const articles = moreButton ? await getArticlesByPinned(props.count) : await getArticlesByYear(props.count);
 
                 // Create cards
                 const cards = articles.map((article, index) => {
@@ -23,8 +25,8 @@ export default function ArticlesList(props: { count?: number, inverted?: boolean
                             alignText={index % 2 == 0 ? 'right' : 'left'}
                             title={article.title}
                             description={formatDescription}
-                            image={article.image}
-                            link={article.link}
+                            image={article.image.url}
+                            link={'/articles/' + article.link}
                             keyword={article.keyword}
                             year={article.year}
                             color={"#21365b"}
@@ -34,10 +36,7 @@ export default function ArticlesList(props: { count?: number, inverted?: boolean
                 setCards(cards);
             }
             fetchData();
-        }, [props.count, props.inverted]);
-
-    const inverted = props.inverted ?? false;
-    const moreButton = props.count ? true : false;
+        }, [moreButton, props.count, props.inverted]);
 
     return (
         <section id="articles">
