@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './header_animation.module.css'
-import { JSX, useCallback, useEffect, useMemo, useRef } from "react";
+import { JSX, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
 import { ErrorBoundary } from 'react-error-boundary';
 import logger from '@/app/api/utils/logger';
@@ -60,7 +60,7 @@ class Simulation {
     updateLinks() {
         // Find links
         const minDistance = 300;
-        let links: Array<{p0Index: number, p1Index: number}> = [];
+        const links: Array<{p0Index: number, p1Index: number}> = [];
         for (let i = 0; i < this.particlesCount; i++) {
             for (let j = i + 1; j < this.particlesCount; j++) {
                 const p0 = this.positions[i];
@@ -262,8 +262,8 @@ function Canvas(props: { width: number, height: number, instance: CanvasElement,
 
 export default function HeaderAnimation() {
     // Get window size
-    let [width, setWidth] = React.useState(0);
-    let [height, setHeight] = React.useState(0);
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
     useEffect(() => {
         setWidth(window.document.body.clientWidth);
         setHeight(1.1 * window.innerHeight);

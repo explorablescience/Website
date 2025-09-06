@@ -5,7 +5,7 @@ import Button from '../../components/ui/buttons/button';
 import Card from '../../components/ui/cards/card';
 import styles from './articles.module.css'
 import { getArticles } from '@/app/api/database/app';
-import { JSX, Suspense, useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 
 export default function ArticlesList(props: { count?: number, inverted?: boolean }) {
     const [cards, setCards] = useState<JSX.Element[]>([]);

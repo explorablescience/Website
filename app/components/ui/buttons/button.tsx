@@ -12,7 +12,7 @@ import styles from './button.module.css';
  * @param props.action Action to execute when the button is clicked
  * @param props.padding Padding between the icon and the text (default: 0)
  */
-export default function Button(props: { content: string, link?: string, action?: any, padding?: string, size: 'standard' | 'large' }) {
+export default function Button(props: { content: string, link?: string, action?: React.MouseEventHandler<HTMLDivElement>, padding?: string, size: 'standard' | 'large' }) {
     const core = <div className={styles.content + ' ' + styles['content-' + props.size]}>
         <span className={styles.circle} aria-hidden="true">
             <span className={styles.icon + " " + styles.arrow}></span>

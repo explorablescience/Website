@@ -1,7 +1,7 @@
 'use client'
 
 interface LogFunction {
-    (message?: any, ...optionalParams: any[]): void;
+    (message?: unknown, ...optionalParams: unknown[]): void;
 }
 
 /**

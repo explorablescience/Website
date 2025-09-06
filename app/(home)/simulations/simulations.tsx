@@ -5,7 +5,7 @@ import styles from './simulations.module.css'
 import Card from '@/app/components/ui/cards/card';
 import { contentFont, titleFont } from '@/app/fonts';
 import { getSimulations } from '@/app/api/database/app';
-import { JSX, Suspense, useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import React from 'react';
 
 export default function SimulationsList(props: { count?: number, inverted?: boolean }) {
@@ -38,7 +38,7 @@ export default function SimulationsList(props: { count?: number, inverted?: bool
             setCards(cards);
         }
         fetchData();
-    }, [props.count, props.inverted]);
+    }, [inverted, props.count, props.inverted]);
 
     return (
         <section id="simulations" className={`${inverted ? '' : styles.simulations}`}>
