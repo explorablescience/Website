@@ -26,8 +26,8 @@ export const metadata: Metadata = {
         images: [
             {
                 url: "https://www.explorablescience.com/imgs/og-image.png",
-                width: 1260,
-                height: 445,
+                width: 686,
+                height: 335,
                 alt: "ExplorableScience - Explore Science Through Interactive Simulations"
             }
         ],
