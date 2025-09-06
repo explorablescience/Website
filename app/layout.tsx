@@ -25,9 +25,9 @@ export const metadata: Metadata = {
         siteName: "ExplorableScience",
         images: [
             {
-                url: "https://www.explorablescience.com/imgs/logo.png",
-                width: 1000,
-                height: 1000,
+                url: "https://www.explorablescience.com/imgs/og-image.png",
+                width: 1260,
+                height: 445,
                 alt: "ExplorableScience - Explore Science Through Interactive Simulations"
             }
         ],
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         site: "https://www.explorablescience.com/",
         creator: "@ExplorableSci",
         images: [
-            "https://www.explorablescience.com/imgs/logo.png"
+            "https://www.explorablescience.com/imgs/og-image.png"
         ]
     },
     robots: "index, follow",
