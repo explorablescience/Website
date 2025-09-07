@@ -25,6 +25,10 @@
     --separator-height: 140px;
     --paragraph-margin: 140px;
 
+    display: block;
+    z-index: -1;
+    position: relative;
+
 }
 @media screen and (max-width: 1340px) {
     .general_relativityArticle {
@@ -40,6 +44,12 @@
         overflow-x: auto;
         overflow-y: hidden;
         padding: 6px 0;
+    }
+}
+
+@media (min-width: 1300px) {
+    .general_relativityArticle {
+        margin-top: 50px !important;
     }
 }
 

@@ -1,4 +1,4 @@
-import { Cite, Color, Note, Strong, Underline } from "./APart";
+import { Cite, Color, Strong } from "./APart";
 
 export default function AConclusion() {
     return (
@@ -10,12 +10,6 @@ export default function AConclusion() {
             So far we have only explored the realm of <Strong>flat space-time</Strong>, where the lattice that defines the geometry of space-time changes from one point to another.
             But, in the realm of general relativity, this changing grid is directly related to the <Color color="purple"><Strong>curvature of space-time</Strong></Color>.
             In the last example we looked at the difference between a <Strong>flat surface</Strong> surface and a <Strong>curved surface</Strong>, a sphere. This, is the real essence of general relativity: <Strong>the presence of mass and energy curves space-time</Strong>.
-
-            <Note>
-                <Strong>Feedback</Strong>: I&apos;m always looking for feedback.
-                I&apos;m always looking for feedback, so if you&apos;ve found something wrong, please tell me on Twitter <Underline href="https://twitter.com/MecanicaSci">@MecanicaSci</Underline> or by email at <Underline href="mailto:mecanicascience@gmail.com">mecanicascience@gmail.com</Underline>.
-                Thank you for reading and see you soon!
-            </Note>
         </>
     )
 }
