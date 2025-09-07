@@ -8,8 +8,6 @@ export type ArticleData = {
     title: string;
     description: string;
     image: { url: string; width: number; height: number; alt: string };
-    link: string;
-    github: string;
     keyword: string;
     year: string;
     pinned: boolean;
@@ -26,36 +24,32 @@ const getArticles = cache(async function () {
     // Get articles from database
     const articles: ArticleData[] = [
         {
-            id: '2022-heat_equation',
-            title: 'General Relativity',
-            description: 'The heat equation describes the temperature evolution inside materials. Using the latest GPU technologies, this simulations aim to compute this propagation considering some obstacles.',
+            id: 'science_of_complexity',
+            title: 'The Science of Complexity',
+            description: 'Discover how complex systems emerge from simple interactions. Explore concepts like phase transitions, self-organization, and emergence through interactive simulations.',
             image: {
-                url: 'https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F10_thermal_conduction.png?alt=media',
-                width: 800,
-                height: 600,
-                alt: 'Heat equation',
+                url: '/articles/science_of_complexity/imgs/logo.webp',
+                width: 640,
+                height: 360,
+                alt: 'The Science of Complexity',
             },
-            link: '/general_relativity/',
-            github: 'https://github.com/ExplorableScience/Simulations/tree/main/2022/HeatEquation',
-            keyword: 'Thermodynamics',
-            year: '2022',
-            pinned: false
+            keyword: 'Complex Systems',
+            year: '2025',
+            pinned: true
         },
         {
-            id: '2022-ising-model',
-            title: 'The Science of Complexity',
-            description: 'The <c>Ising model</c> is a model from Statistical Physics modelling magnetism inside materials. In this simulation, GPU is used to simulate this model in real time, using the Metropolis Algorithm.',
+            id: 'general_relativity',
+            title: 'General Relativity',
+            description: 'Explore the fundamental principles of General Relativity and how they shape our understanding of gravity and the universe.',
             image: {
-                url: 'https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F9_modele_ising.png?alt=media',
-                width: 800,
-                height: 600,
-                alt: 'Ising model',
+                url: '/articles/general_relativity/images/logo.webp',
+                width: 640,
+                height: 360,
+                alt: 'General Relativity',
             },
-            link: '/science_of_complexity/',
-            github: 'https://github.com/ExplorableScience/Simulations/tree/main/2022/IsingModel',
-            keyword: 'Statistical Physics',
-            year: '2022',
-            pinned: true
+            keyword: 'Relativity',
+            year: '2023',
+            pinned: false
         }
     ];
 
