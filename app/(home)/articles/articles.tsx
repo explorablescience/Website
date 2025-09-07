@@ -26,7 +26,7 @@ export default function ArticlesList(props: { count?: number, inverted?: boolean
                             title={article.title}
                             description={formatDescription}
                             image={article.image.url}
-                            link={'/articles/' + article.link}
+                            link={'/articles/' + article.id}
                             keyword={article.keyword}
                             year={article.year}
                             color={"#21365b"}
