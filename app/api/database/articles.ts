@@ -10,6 +10,7 @@ export type ArticleData = {
     image: { url: string; width: number; height: number; alt: string };
     keyword: string;
     year: string;
+    date: string;
     pinned: boolean;
 }
 
@@ -35,6 +36,7 @@ const getArticles = cache(async function () {
             },
             keyword: 'Complex Systems',
             year: '2025',
+            date: '2025-09-01',
             pinned: true
         },
         {
@@ -49,6 +51,7 @@ const getArticles = cache(async function () {
             },
             keyword: 'Relativity',
             year: '2023',
+            date: '2023-09-01',
             pinned: false
         }
     ];

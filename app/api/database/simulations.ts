@@ -12,6 +12,7 @@ export type SimulationData = {
     github: string;
     keyword: string;
     year: string;
+    date: string;
     pinned: boolean;
 }
 
@@ -39,6 +40,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/xam4lor/ForceDesMarees',
             keyword: 'Mechanics',
             year: '2020',
+            date: '2020-01-01',
             pinned: false
         },
         {
@@ -55,6 +57,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Simulations/tree/master/2020/Wave%20Propagation',
             keyword: 'Optics',
             year: '2020',
+            date: '2020-01-01',
             pinned: false
         },
         {
@@ -71,6 +74,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Simulations/tree/master/2022/ThermalConduction',
             keyword: 'Thermodynamics',
             year: '2022',
+            date: '2022-01-01',
             pinned: false
         },
         {
@@ -87,6 +91,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Simulations/tree/master/2020/Lissajous%20Curves',
             keyword: 'Optics',
             year: '2020',
+            date: '2020-01-01',
             pinned: false
         },
         {
@@ -103,6 +108,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Simulations/tree/master/2020/Multiple%20Springs',
             keyword: 'Mechanics',
             year: '2020',
+            date: '2020-01-01',
             pinned: false
         },
         {
@@ -119,6 +125,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Simulations/tree/master/2022/HydrogenAtom',
             keyword: 'Quantum Mechanics',
             year: '2022',
+            date: '2022-01-01',
             pinned: false
         },
         {
@@ -135,6 +142,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Simulations/tree/master/2022/IsingModel',
             keyword: 'Statistical Physics',
             year: '2022',
+            date: '2022-01-01',
             pinned: true
         },
         {
@@ -151,6 +159,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Simulations/tree/master/2020/Article_Le_probleme_a_N_corps/07_Solar_System_Simulation',
             keyword: 'Mechanics',
             year: '2020',
+            date: '2020-01-01',
             pinned: false
         },
         {
@@ -167,12 +176,13 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/mecanicascience/Lander-Simulation',
             keyword: 'Computer Science',
             year: '2021',
+            date: '2021-01-01',
             pinned: false
         },
         {
             id: '2021-champ_electrique',
             title: "Electrostatic field",
-            description: "This project shows the <c>electrostatic line fields<8c> beeing computed in real time. It computes and shows the field lines for entirely <c>customizable sources</c>.",
+            description: "This project shows the <c>electrostatic line fields</c> beeing computed in real time. It computes and shows the field lines for entirely <c>customizable sources</c>.",
             image: {
                 url: 'https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F2_champ_electrique.png?alt=media',
                 width: 800,
@@ -183,6 +193,7 @@ const getSimulations = cache(async function () {
             github: 'https://github.com/xam4lor/ElectromagnetismFields/',
             keyword: 'Electromagnetism',
             year: '2021',
+            date: '2021-01-01',
             pinned: false
         }
     ];

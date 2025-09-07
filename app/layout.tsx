@@ -52,6 +52,9 @@ export const metadata: Metadata = {
         canonical: "https://www.explorablescience.com/",
         languages: {
             "en-US": "https://www.explorablescience.com/"
+        },
+        types: {
+            "application/rss+xml": "https://www.explorablescience.com/feed.xml"
         }
     }
 };
