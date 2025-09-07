@@ -75,6 +75,9 @@ export default function RootLayout({
                         gtag('config', 'G-FLV6EYV4NL');
                     `}
                 </Script>
+
+                {/* Google site verification */}
+                <meta name="google-site-verification" content="QOovAZzYc45_jjgLiuSCeeoF2FlcJesXsfmQB4w_Ods" />
             </head>
             <body className={styles.body}>{children}</body>
         </html>
