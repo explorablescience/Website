@@ -1,3 +1,5 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from "next";
 import styles from './layout.module.css'
 import { inter } from "./fonts.ts";
@@ -79,7 +81,11 @@ export default function RootLayout({
                 {/* Google site verification */}
                 <meta name="google-site-verification" content="QOovAZzYc45_jjgLiuSCeeoF2FlcJesXsfmQB4w_Ods" />
             </head>
-            <body className={styles.body}>{children}</body>
+            <body className={styles.body}>
+                {children}
+                <Analytics />
+                <SpeedInsights />
+            </body>
         </html>
     );
 }
