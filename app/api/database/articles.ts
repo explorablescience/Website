@@ -100,6 +100,14 @@ const getArticles = cache(async function () {
     };
 });
 
+/**
+ * Get all articles
+ */
+export async function getAllArticles(): Promise<ArticleData[]> {
+    const articles = await getArticles();
+    return articles.data;
+}
+
 /** Get articles sorted by pinned and year
  * @param max Maximum number of articles to return
  * @returns An array of articles

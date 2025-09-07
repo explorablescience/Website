@@ -234,6 +234,14 @@ const getSimulations = cache(async function () {
     };
 });
 
+/**
+ * Get all simulations
+ */
+export async function getAllSimulations(): Promise<SimulationData[]> {
+    const simulations = await getSimulations();
+    return simulations.data;
+}
+
 /** Get simulations sorted by pinned and year
  * @param max Maximum number of simulations to return
  * @returns An array of simulations
