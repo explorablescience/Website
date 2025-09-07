@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import styles from './layout.module.css'
 import { inter } from "./fonts.ts";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
     title: {
@@ -60,6 +61,21 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${inter.className} antialiased`}>
+            <head>
+                {/* Google tag (gtag.js) */}
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-FLV6EYV4NL"
+                    strategy="afterInteractive"
+                />
+                <Script id="gtag-init" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-FLV6EYV4NL');
+                    `}
+                </Script>
+            </head>
             <body className={styles.body}>{children}</body>
         </html>
     );
