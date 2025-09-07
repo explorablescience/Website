@@ -1,3 +1,6 @@
+'use client'
+
+import { ReactNode, useLayoutEffect, useState } from "react";
 import Article from "./structure/Article";
 import Conclusion from "./structure/Conclusion";
 import Introduction from "./structure/Introduction";
@@ -9,8 +12,18 @@ import APart2 from "./text/APart2";
 import APart3 from "./text/APart3";
 import APart4 from "./text/APart4";
 
+const DefaultOnSSR: React.FC = () => null
+
+export const NoSSR: React.FC<{ children: ReactNode; onSSR?: ReactNode }> = ({ children, onSSR = <DefaultOnSSR /> }) => {
+    const [onBrowser, setOnBrowser] = useState(false)
+    useLayoutEffect(() => {
+        setOnBrowser(true)
+    }, [])
+    return <>{onBrowser ? children : onSSR}</>
+}
+
 export default function GeneralRelativityApp() {
-    return (
+    return <NoSSR>
         <Article
             title="Exploring General Relativity"
             subtitle="A Mathematical Journey">
@@ -50,5 +63,5 @@ export default function GeneralRelativityApp() {
                 <AConclusion />
             </Conclusion>
         </Article>
-    );
+    </NoSSR>;
 };

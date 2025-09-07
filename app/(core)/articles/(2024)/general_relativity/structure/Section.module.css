@@ -26,8 +26,8 @@
     --paragraph-margin: 140px;
 
     display: block;
-    z-index: -1;
     position: relative;
+    overflow-y: hidden;
 
 }
 @media screen and (max-width: 1340px) {
@@ -59,7 +59,7 @@
     margin-bottom: 83px;
     display: flex;
     flex-direction: column;
-    background-color: #040918;
+    background-color: #131922;
 }
 .article-head > h1 {
     color: #ececec;
@@ -572,7 +572,7 @@
     margin-bottom: 83px;
     display: flex;
     flex-direction: column;
-    background-color: #040918;
+    background-color: #131922;
 }
 
 .article-head>h1 {
