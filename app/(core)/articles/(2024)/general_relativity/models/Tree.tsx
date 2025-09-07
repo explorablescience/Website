@@ -65,4 +65,4 @@ export function TreeLeaves(props: JSX.IntrinsicElements['group']) {
     )
 }
 
-useGLTF.preload('/articles/general_relativity/articles/general_relativity/models/tree/tree.gltf')
+useGLTF.preload('/articles/general_relativity/models/tree/tree.gltf')

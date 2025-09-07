@@ -3,6 +3,7 @@ import Navbar from "@/app/components/header/navbar";
 import { MathJaxContext } from "better-react-mathjax";
 import { Metadata } from "next";
 import GeneralRelativityApp from "./GeneralRelativityApp";
+import { ErrorBoundary } from "react-error-boundary";
 
 export const metadata: Metadata = {
     title: 'Exploring General Relativity'
@@ -26,20 +27,22 @@ export default function Page() {
     return <>
         <Navbar small />
 
-        <MathJaxContext config={{
-            loader: { load: ['[tex]/html'] },
-            tex: {
-                inlineMath: [['$', '$']],
-                macros: macros
-            },
-            options: {
-                renderActions: {
-                    addMenu: []
+        <ErrorBoundary fallback={<div className="error">An error occurred while loading the article.</div>}>
+            <MathJaxContext config={{
+                    loader: { load: ['[tex]/html'] },
+                    tex: {
+                        inlineMath: [['$', '$']],
+                        macros: macros
+                },
+                options: {
+                    renderActions: {
+                        addMenu: []
+                    }
                 }
-            }
-        }}>
-            <GeneralRelativityApp />
-        </MathJaxContext>
+            }}>
+                <GeneralRelativityApp />
+            </MathJaxContext>
+        </ErrorBoundary>
 
         <Footer />
     </>
