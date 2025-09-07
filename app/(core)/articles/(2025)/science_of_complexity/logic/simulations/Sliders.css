@@ -1,0 +1,64 @@
+.simulation-controls {
+    margin: 10px 0;
+}
+
+.sim-slider-label > p, .sim-slider-value > p {
+    margin: 0;
+}
+.sim-slider-label {
+    margin-right: 16px;
+    font-weight: 600;
+    user-select: none;
+}
+.sim-slider-value {
+    margin-left: 16px;
+}
+
+.simulation-slider {
+    display: flex;
+    width: 89%;
+    margin: auto;
+}
+
+.simulation-slider-bar-container {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 2px;
+}
+.simulation-slider-bar-container:active {
+    cursor: grabbing;
+}
+
+.simulation-slider-bar {
+    position: relative;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.sim-slider-left-gutter {
+    left: 0px;
+    position: absolute;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.sim-slider-right-gutter {
+    background: #c6cdd1;
+    position: absolute;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.sim-slider-knob {
+    margin-left: -3px;
+    top: -7px;
+    position: absolute;
+}
+
+.sim-slider-knob-inner {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}

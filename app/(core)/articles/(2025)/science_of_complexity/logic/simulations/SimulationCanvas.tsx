@@ -1,0 +1,63 @@
+import { Html, useProgress } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import './SimulationCanvas.css';
+import icon_3d from './assets/icon_3d.svg';
+import React from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import logError from "../api_manager";
+import Image from "next/image";
+
+import type { FallbackProps } from "react-error-boundary";
+
+function ErrorDOM({ resetErrorBoundary }: FallbackProps) {
+    return <div className="error-simulation">
+        <p>Something went wrong with the simulation.</p>
+        <button onClick={resetErrorBoundary}>Try again</button>
+    </div>;
+}
+
+function LoaderDOM() {
+    return <div className="loading-simulation">Loading simulation....</div>
+}
+
+function LoaderCanvas() {
+    const { progress } = useProgress();
+    const progressFormatted = Math.round(progress);
+    return <Html center style={{
+        fontFamily: "'Railway', 'Montserrat', Arial'",
+        color: 'black',
+        fontSize: '30px',
+        width: 'max-content'
+    }}>Loading simulation... {progressFormatted}% done.</Html>;
+}
+
+export function SimulationCanvas(props: {
+    visible: boolean; // True if the simulation is visible
+    aspectRatio?: string; canvasRef?: React.RefObject<HTMLCanvasElement | null>;
+    show3DIcon?: boolean; children: React.ReactNode;
+    customErrorComponent?: React.ComponentType<FallbackProps>;
+    is2D?: boolean; // Optional prop to indicate if the simulation is 2D
+}) {
+    const show3DIcon = props.show3DIcon != false && !props.is2D; // Default to true if not specified and not a 2D simulation
+
+    return <>
+        <ErrorBoundary FallbackComponent={props.customErrorComponent || ErrorDOM} onError={logError}>
+            <Suspense fallback={<LoaderDOM />}>
+                <div className="simulation-canvas-container" style={{ aspectRatio: props.aspectRatio || '16/9' }}>
+                    <div className="simulation-canvas-icon">
+                        {show3DIcon && <Image src={icon_3d} className="icon-3d" alt="3D Icon" />}
+                    </div>
+                    {!props.is2D && <Canvas frameloop={props.visible ? 'always' : 'never'} ref={props.canvasRef} className="simulation-canvas" shadows resize={{ scroll: false }} style={{ cursor: show3DIcon ? 'move' : 'default' }}>
+                        <Suspense fallback={<LoaderCanvas />}>
+                            <group name="core">
+                                {props.children}
+                            </group>
+                        </Suspense>
+                    </Canvas>}
+                    {props.is2D && <canvas className="simulation-canvas" ref={props.canvasRef} />}
+                </div>
+            </Suspense>
+        </ErrorBoundary>
+    </>
+}

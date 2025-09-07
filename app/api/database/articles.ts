@@ -43,7 +43,7 @@ const getArticles = cache(async function () {
         },
         {
             id: '2022-ising-model',
-            title: 'Ising model',
+            title: 'The Science of Complexity',
             description: 'The <c>Ising model</c> is a model from Statistical Physics modelling magnetism inside materials. In this simulation, GPU is used to simulate this model in real time, using the Metropolis Algorithm.',
             image: {
                 url: 'https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F9_modele_ising.png?alt=media',
@@ -51,7 +51,7 @@ const getArticles = cache(async function () {
                 height: 600,
                 alt: 'Ising model',
             },
-            link: '/ising_model/',
+            link: '/science_of_complexity/',
             github: 'https://github.com/ExplorableScience/Simulations/tree/main/2022/IsingModel',
             keyword: 'Statistical Physics',
             year: '2022',

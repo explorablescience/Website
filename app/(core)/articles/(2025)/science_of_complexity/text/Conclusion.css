@@ -1,0 +1,31 @@
+.conclusion-simulations-div {
+    display: flex;
+    margin: -6px 0 20px 0;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+.conclusion-simulations-div .simulation-container {
+    margin: 0;
+    flex: 1;
+}
+.conclusion-simulations-div .simulation-canvas-container {
+    aspect-ratio: unset;
+    display: contents;
+}
+.conclusion-simulations-div canvas {
+    border-radius: 0px;
+}
+.conclusion-simulations-div .simulation-controls {
+    margin: 0;
+}
+
+.conclusion-simulations-div svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 780px) {
+    .conclusion-part > h1 {
+        margin-bottom: 20px;
+    }
+}

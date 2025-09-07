@@ -1,0 +1,61 @@
+.ising-graph-simulation-container {
+    position: relative;
+    border-radius: 11px;
+    border: solid 1px black;
+    background-color: #ffffff;
+}
+.ising-graph-canvas-container-up,
+.ising-graph-canvas-container-down {
+    position: absolute;
+    width: 32%;
+    right: 0;
+}
+.ising-graph-canvas-container-up {
+    top: 0;
+    margin: 5px 19px 0 0;
+}
+
+.ising-graph-canvas-container-down {
+    bottom: 0;
+    margin: 0 19px 52px 0;
+}
+.ising-graph-canvas-container-svg {
+    padding: 0 0 0 10px;
+    z-index: 2;
+    position: relative;
+}
+
+.ising-graphs-touch-icon {
+    position: absolute;
+    top: 0;
+    margin: 49px 0 0 67px;
+    animation: touch-icon-animation 1s infinite;
+}
+@keyframes touch-icon-animation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0px); }
+}
+.ising-graphs-touch-icon>svg {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+@media (max-width: 780px) {
+    .ising-graphs-touch-icon {
+        margin: 50px 0 0 66px;
+    }
+    .ising-graphs-touch-icon>svg {
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (max-width: 400px) {
+    .ising-graphs-touch-icon {
+        margin: 40px 0 0 66px;
+    }
+    .ising-graphs-touch-icon>svg {
+        width: 20px;
+        height: 20px;
+    }
+}

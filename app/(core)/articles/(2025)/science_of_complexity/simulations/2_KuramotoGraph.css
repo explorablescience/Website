@@ -1,0 +1,23 @@
+.kuramoto-graph-simulation-container {
+    position: relative;
+    border-radius: 11px;
+    border: solid 1px black;
+    background-color: #ffffff;
+}
+
+.kuramoto-graph-canvas-container {
+    position: absolute;
+    width: 32%;
+    right: 0;
+}
+
+.kuramoto-graph-canvas-container {
+    bottom: 0;
+    margin: 0 10px 26px 0;
+}
+
+.kuramoto-graph-canvas-container-svg {
+    padding: 0 0 0 10px;
+    z-index: 2;
+    position: relative;
+}

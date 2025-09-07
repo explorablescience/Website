@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="99.947746mm"
+   height="75.484558mm"
+   viewBox="0 0 99.947746 75.484558"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="fish.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.7500982"
+     inkscape:cx="61.325303"
+     inkscape:cy="131.98272"
+     inkscape:window-width="1920"
+     inkscape:window-height="1044"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"><path
+       id="path1"
+       style="font-variation-settings:'wdth' 95, 'wght' 500;fill:#ffbe0e;stroke:#000000;stroke-width:3;stroke-linejoin:round"
+       d="m 0,-55.361361 c -7.233624,0 -10.636408,16.309314 -11.276832,32.038875 0,0 -10.724855,13.7182701 -7.731827,16.9607201 2.298053,2.48955 6.066415,-3.9166901 7.692553,-7.0259301 0.124074,3.6295296 0.402629,7.0012301 0.819589,9.8603801 1.724739,11.82679 4.520187,26.0693599 7.10159,38.7227599 -0.728472,2.83258 -0.274272,5.35692 -2.141686,6.45639 -7.700014,4.53352 -12.889653,4.97487 -12.889653,10.10843 0,5.72617 14.482276,5.31951 18.426266,0.85421 3.94399,4.4653 18.426265,4.87196 18.426265,-0.85421 0,-5.13356 -5.189632,-5.57491 -12.889653,-10.10843 -1.86741,-1.09947 -1.912058,-3.87323 -2.32875,-6.39403 2.5814,-12.6534 5.563913,-26.9583299 7.288654,-38.7851199 0.41696,-2.85915 0.695509,-6.2308505 0.819589,-9.8603801 1.62613,3.10924 5.394503,9.5154801 7.692553,7.0259301 2.99303,-3.24245 -7.731827,-16.9607201 -7.731827,-16.9607201 C 10.636411,-39.052049 7.23363,-55.361361 0,-55.361361 Z"
+       sodipodi:nodetypes="scscscsscsscscscs" /></g></svg>

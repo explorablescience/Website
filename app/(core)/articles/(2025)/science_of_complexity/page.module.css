@@ -1,0 +1,71 @@
+.science_of_complexity {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #ffffff;
+    color: #333;
+    font-weight: 300;
+    font-family: 'Railway', 'Montserrat', Arial;
+    text-align: justify;
+    font-size: 1.2em;
+    line-height: 1.7em;
+}
+
+.science_of_complexity strong {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.science_of_complexity a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.science_of_complexity a:hover {
+    text-decoration: underline;
+}
+ 
+.science_of_complexity .MathJax {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.texcolor-magnet,
+.text-color-magnet {
+    color: #aa51df;
+}
+
+.texcolor-magnets-slider,
+.text-color-magnets-slider {
+    color: #746cc0;
+}
+
+.texcolor-temperature,
+.text-color-temperature {
+    color: #6a5ff7;
+}
+
+.texcolor-electron,
+.text-color-electron {
+    color: #e9b109;
+}
+
+.texcolor-magnet-north,
+.text-color-magnet-north {
+    color: #ff3235;
+}
+
+.texcolor-magnet-south,
+.text-color-magnet-south {
+    color: #2939e2;
+}
+
+.texcolor-particle,
+.text-color-particle {
+    color: #1ea2ee;
+}
+
+.texcolor-coupling,
+.text-color-coupling {
+    color: #12a02a;
+}
