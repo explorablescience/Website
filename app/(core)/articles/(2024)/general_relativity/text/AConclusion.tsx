@@ -1,4 +1,4 @@
-import { Cite, Color, Landmark, Note, Strong, Underline } from "./APart";
+import { Cite, Color, Note, Strong, Underline } from "./APart";
 
 export default function AConclusion() {
     return (
@@ -9,19 +9,7 @@ export default function AConclusion() {
             Yes, <Color color="purple"><Strong>curved</Strong></Color>.
             So far we have only explored the realm of <Strong>flat space-time</Strong>, where the lattice that defines the geometry of space-time changes from one point to another.
             But, in the realm of general relativity, this changing grid is directly related to the <Color color="purple"><Strong>curvature of space-time</Strong></Color>.
-            In the last example we looked at the difference between a <Strong>flat surface</Strong> surface and a <Strong>curved survace</Strong>, a sphere.
-            This example will be the starting point for our next journey.
-
-            <br /><br />
-            
-            In the second part of our journey, we&apos;ll delve deeper into this concept, which will drive us to the heart of <Landmark color="red">Einstein&apos;s equation</Landmark> in <Color color="red">vacuum</Color>.
-            <Cite>But where is <Color color="green"><Strong>mass</Strong></Color>? We didn&apos;t even talk about <Color color="green"><Strong>mass</Strong></Color> yet!</Cite>
-            In fact, we haven&apos;t talked about <Color color="green"><Strong>mass</Strong></Color> yet, but it will be the subject of the next topic: the <Strong>stress-energy tensor</Strong>.
-            This concept will finally guide us through the world of <Landmark color="gray">black holes</Landmark>, where we will explore the <Strong>Schwarzschild metric</Strong>.
-            This journey will continue in the second part of this article.
-            I hope you enjoyed this first part, and I hope to see you again in the second part and conclusion of this article.
-
-            <br /><br />
+            In the last example we looked at the difference between a <Strong>flat surface</Strong> surface and a <Strong>curved surface</Strong>, a sphere. This, is the real essence of general relativity: <Strong>the presence of mass and energy curves space-time</Strong>.
 
             <Note>
                 <Strong>Feedback</Strong>: I&apos;m always looking for feedback.

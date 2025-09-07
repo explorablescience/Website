@@ -32,9 +32,9 @@ export default function AIntroduction() {
             <br />
 
             This article will be divided into <Strong>two parts</Strong>, as I feel that the concepts we will be exploring are too vast to be covered in a single article.
-            In this first part of our exploration, we will embark on a journey through the mathematical landscapes of <Landmark color="red"><Strong>geodesics</Strong></Landmark> and <Landmark color="red"><Strong>metric tensors</Strong></Landmark>.
+            In this article, we will embark on a journey through the mathematical landscapes of <Landmark color="red"><Strong>geodesics</Strong></Landmark> and <Landmark color="red"><Strong>metric tensors</Strong></Landmark>.
             We will trace the evolution of these concepts, from the notions of <Color color="blue">forces</Color> to the revolutionary insights that reshaped our understanding of <Color color="purple">space-time</Color>.
-            By the <i>end of this first part</i>, you will have a solid understanding of <Strong>how objects behave</Strong> in <Color color="purple">space-time</Color>.
+            By the <i>end of this article</i>, you will have a solid understanding of <Strong>how objects behave</Strong> in <Color color="purple">space-time</Color>.
             <i> So, without further ado, let us begin our journey.</i>
 
             {!isDesktop && 

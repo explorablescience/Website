@@ -99,6 +99,40 @@
     .error {
         font-size: 21px;
     }
+}.underline {
+    display: unset;
+    color: var(--color-blue);
+}
+
+.underline-href {
+    display: unset;
+}
+
+.underline-href>a {
+    position: relative;
+    text-decoration: none !important;
+    color: var(--color-blue);
+    align-content: center;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.underline-href .underline-href>a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: -1.1px;
+    background-color: var(--color-blue);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.underline-href>a:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
 }
 
 
@@ -119,7 +153,7 @@
 }
 .landmark-gray {
     border-color: var(--color-gray-pale);
-    color: var(--background-color);
+    color: white;
     background-color: var(--color-gray-pale);
 }
 .landmark-purple {

@@ -42,10 +42,7 @@ export default function Simulation(props: {
     }, []);
 
     return (
-        <div ref={articleRef} className={`${
-            (simulationSide == "left" ? styles['article-simulation-left'] : styles['article-simulation-right'])
-            + (cssType == 0 ? styles['asim-top'] : cssType == 1 ? styles['asim-fixed'] : (simulationSide == "right" ? styles['asim-bottom-left'] : styles['asim-bottom-right']))
-        }`}>
+        <div ref={articleRef} className={`${(simulationSide == "left" ? styles['article-simulation-left'] : styles['article-simulation-right'])} ${(cssType == 0 ? styles['asim-top'] : cssType == 1 ? styles['asim-fixed'] : (simulationSide == "right" ? styles['asim-bottom-left'] : styles['asim-bottom-right']))}`}>
             <div ref={ref} style={{
                 width: (isDesktop ? "654px" : clientDim.width * 0.9 + "px"),
                 height: clientDim.height * (isDesktop ? 1.0 : 0.6)
