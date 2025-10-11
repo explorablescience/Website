@@ -20,23 +20,27 @@ function handlePost(request: Request) : Promise<Response> {
         switch (data.type) {
             case DataType.DATAUSER:
                 onUserData(data.payload as DataUserPayload).catch((error) => {
+                    console.error('Error handling user data:', error);
                     success = false;
                     error_message = 'Error handling user data: ' + error.message;
                 });
                 break;
             case DataType.ERROR_REPORT:
                 onErrorReport(data.payload as ErrorReportPayload).catch((error) => {
+                    console.error('Error handling error report:', error);
                     success = false;
                     error_message = 'Error handling error report: ' + error.message;
                 });
                 break;
             case DataType.COMMENT:
                 onComment(data.payload as CommentPayload).catch((error) => {
+                    console.error('Error handling comment:', error);
                     success = false;
                     error_message = 'Error handling comment: ' + error.message;
                 });
                 break;
             default:
+                console.error('Error handling unknown data type:', data.type);
                 success = false;
                 error_message = 'Bad Request: Unknown data type';
                 break;

@@ -41,7 +41,10 @@ async function addUserData(userID: string, type: string, payload: unknown) {
 // Add entry to a specified collection to reference user IDs
 export async function addUserReference(userID: string, type: string, data: { path: string; id: string }) {
     // Create document with userID as ID to make sure it exists
-    await db.collection(type).doc(userID).set({ userID });
+    await db.collection(type).doc(userID).set({ userID }).catch((err) => {
+        console.error('Error creating reference document:', err);
+        return Promise.reject(err);
+    });
 
     // Add reference to the specific data entry
     return await db.collection(type).doc(userID).collection('references').add(data);
@@ -50,15 +53,17 @@ export async function addUserReference(userID: string, type: string, data: { pat
 
 export async function onConnectionReport(payload: DataUserPayload) {
     const userId = getUniqueUserId(payload.ipAddress, payload.navigator);
-    addUserData(userId, 'connections', payload);
+    return addUserData(userId, 'connections', payload);
 }
 export async function onErrorReport(payload: ErrorReportPayload) {
     const userId = getUniqueUserId(payload.ipAddress, payload.navigator);
-    const newData = await addUserData(userId, 'errors', payload);
-    addUserReference(userId, 'errors', { path: newData.path, id: newData.id });
+    return await addUserData(userId, 'errors', payload).then(newData => {
+        return addUserReference(userId, 'errors', { path: newData.path, id: newData.id });
+    });
 }
 export async function onComment(payload: CommentPayload) {
     const userId = getUniqueUserId(payload.trackingPayload.ipAddress, payload.trackingPayload.navigator);
-    const newData = await addUserData(userId, 'comments', payload);
-    addUserReference(userId, 'comments', { path: newData.path, id: newData.id });
+    return await addUserData(userId, 'comments', payload).then(newData => {
+        return addUserReference(userId, 'comments', { path: newData.path, id: newData.id });
+    });
 }
