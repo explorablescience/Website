@@ -1,8 +1,10 @@
-'use server'
+"use server"
+
+export const runtime = 'nodejs';
 import { CommentPayload, DataStructure, DataType, DataUserPayload, ErrorReportPayload } from "./data_types";
 import { onComment, onConnectionReport as onUserData, onErrorReport } from "./database/handle_post";
 
-function handlePost(request: Request) : Promise<Response> {
+async function handlePost(request: Request) : Promise<Response> {
     if (request.method !== 'POST') {
         return Promise.resolve(new Response('Method Not Allowed', { status: 405 }));
     }
@@ -10,46 +12,35 @@ function handlePost(request: Request) : Promise<Response> {
     if (!contentType.includes('application/json')) {
         return Promise.resolve(new Response('Unsupported Media Type', { status: 415 }));
     }
-    return request.json().then((data: DataStructure) => {
+    return await request.json().then(async (data: DataStructure) => {
         if (!data.type || !data.payload) {
             return Promise.resolve(new Response('Bad Request: Missing type or payload', { status: 400 }));
         }
-        // Handle different data types
-        let success = true;
-        let error_message = "";
-        switch (data.type) {
-            case DataType.DATAUSER:
-                onUserData(data.payload as DataUserPayload).catch((error) => {
-                    console.error('Error handling user data:', error);
-                    success = false;
-                    error_message = 'Error handling user data: ' + error.message;
-                });
-                break;
-            case DataType.ERROR_REPORT:
-                onErrorReport(data.payload as ErrorReportPayload).catch((error) => {
-                    console.error('Error handling error report:', error);
-                    success = false;
-                    error_message = 'Error handling error report: ' + error.message;
-                });
-                break;
-            case DataType.COMMENT:
-                onComment(data.payload as CommentPayload).catch((error) => {
-                    console.error('Error handling comment:', error);
-                    success = false;
-                    error_message = 'Error handling comment: ' + error.message;
-                });
-                break;
-            default:
-                console.error('Error handling unknown data type:', data.type);
-                success = false;
-                error_message = 'Bad Request: Unknown data type';
-                break;
-        }
-        // Acknowledge receipt
-        if (success) {
-            return Promise.resolve(new Response('OK', { status: 200 }));
-        } else {
-            return Promise.resolve(new Response(error_message, { status: 400 }));
+        // Handle different data types and await DB operations so errors are
+        // returned to the client instead of happening asynchronously.
+        try {
+            switch (data.type) {
+                case DataType.DATAUSER:
+                    await onUserData(data.payload as DataUserPayload);
+                    break;
+                case DataType.ERROR_REPORT:
+                    await onErrorReport(data.payload as ErrorReportPayload);
+                    break;
+                case DataType.COMMENT:
+                    await onComment(data.payload as CommentPayload);
+                    break;
+                default:
+                    console.error('Error handling unknown data type:', data.type);
+                    return new Response('Bad Request: Unknown data type', { status: 400 });
+            }
+
+            // If we reach here the DB operation succeeded
+            return new Response('OK', { status: 200 });
+        } catch (error) {
+            console.error('Error handling payload:', error);
+            const message = error instanceof Error ? error.message : String(error);
+            // Return 500 for server-side errors (including DEADLINE_EXCEEDED)
+            return new Response('Error handling payload: ' + message, { status: 500 });
         }
     }).catch((error) => {
         console.error('Error parsing JSON:', error);
