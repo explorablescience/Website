@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ErrorInfo } from "react";
-import { DataStructure, DataType } from "../data_types";
+import { CommentPayload, DataStructure, DataType, DataUserPayload, ErrorReportPayload } from "../data_types";
 
 function isLocalhost() {
     try {
@@ -120,19 +120,19 @@ export async function postUserInformations() {
     const ipAddress = await getIP();
     const [windowData, documentData, navigatorData] = getWDNData();
     const payload = {
-        type: DataType.CONNECTION_REPORT,
+        type: DataType.DATAUSER,
         payload: {
             timestamp: new Date().toISOString(),
             ipAddress,
             window: windowData,
             document: documentData,
             navigator: navigatorData
-        }
+        } as DataUserPayload
     } as DataStructure;
 
     // Send report to server
     if (isLocalhost()) {
-        console.log('[Analytics] Posting user informations (localhost/dev)', payload);
+        console.log('[Analytics] Posting user data (localhost/dev)', payload);
     }
     fetch(getApiEndpoint(), {
         method: "POST",
@@ -169,7 +169,7 @@ export async function postError(error: Error, info?: ErrorInfo) {
             window: windowData,
             document: documentData,
             navigator: navigatorData
-        }
+        } as ErrorReportPayload
     } as DataStructure;
 
     // Send report to server
@@ -202,8 +202,8 @@ export async function postComment(name: string, email: string, message: string):
                 document: documentData,
                 navigator: navigatorData
             }
-        }
-    };
+        } as CommentPayload
+    } as DataStructure;
 
     // Send report to server
     if (isLocalhost()) {

@@ -1,5 +1,6 @@
 'use server'
-import { DataStructure, DataType } from "./data_types";
+import { CommentPayload, DataStructure, DataType, DataUserPayload, ErrorReportPayload } from "./data_types";
+import { onComment, onConnectionReport as onUserData, onErrorReport } from "./database/handle_post";
 
 function handlePost(request: Request) : Promise<Response> {
     if (request.method !== 'POST') {
@@ -14,21 +15,38 @@ function handlePost(request: Request) : Promise<Response> {
             return Promise.resolve(new Response('Bad Request: Missing type or payload', { status: 400 }));
         }
         // Handle different data types
+        let success = true;
+        let error_message = "";
         switch (data.type) {
-            case DataType.CONNECTION_REPORT:
-                console.log('Received connection report:', data.payload);
+            case DataType.DATAUSER:
+                onUserData(data.payload as DataUserPayload).catch((error) => {
+                    success = false;
+                    error_message = 'Error handling user data: ' + error.message;
+                });
                 break;
             case DataType.ERROR_REPORT:
-                console.log('Received error report:', data.payload);
+                onErrorReport(data.payload as ErrorReportPayload).catch((error) => {
+                    success = false;
+                    error_message = 'Error handling error report: ' + error.message;
+                });
                 break;
             case DataType.COMMENT:
-                console.log('Received comment:', data.payload);
+                onComment(data.payload as CommentPayload).catch((error) => {
+                    success = false;
+                    error_message = 'Error handling comment: ' + error.message;
+                });
                 break;
             default:
-                return Promise.resolve(new Response('Bad Request: Unknown type', { status: 400 }));
+                success = false;
+                error_message = 'Bad Request: Unknown data type';
+                break;
         }
         // Acknowledge receipt
-        return Promise.resolve(new Response('OK', { status: 200 }));
+        if (success) {
+            return Promise.resolve(new Response('OK', { status: 200 }));
+        } else {
+            return Promise.resolve(new Response(error_message, { status: 400 }));
+        }
     }).catch((error) => {
         console.error('Error parsing JSON:', error);
         return Promise.resolve(new Response('Bad Request: Invalid JSON', { status: 400 }));
