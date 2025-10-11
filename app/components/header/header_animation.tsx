@@ -221,7 +221,8 @@ function Canvas(props: { width: number, height: number, instance: CanvasElement,
         const canvas = canvasRef.current;
         const context = canvas?.getContext('2d');
         if (!context) {
-            logger.error('Could not get 2d canvas context.');
+            logger.error(new Error("Canvas context is null"));
+            return;
         }
         contextRef.current = context!;
 

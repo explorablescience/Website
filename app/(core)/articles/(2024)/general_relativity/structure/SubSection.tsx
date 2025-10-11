@@ -18,7 +18,7 @@ export default function SubSection(props: {
     const [simulationPercentage, setSimulationPercentage] = useState(0);
     const [isShown, setIsShown] = useState(false);
     const [showAnchor, setShowAnchor] = useState(false);
-    const [simulationSide, _setSimulationSide] = useState<"left" | "right">(props.alignSimulation ?? "left");
+    const [simulationSide] = useState<"left" | "right">(props.alignSimulation ?? "left");
 
     // Calculate scroll percentage of section
     
