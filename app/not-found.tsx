@@ -8,7 +8,7 @@ import logger from './api/client/logger';
 import HeaderAnimation from './components/header/header_animation'
 
 export default function NotFound() {
-    logger.error("Page not found");
+    logger.error(new Error('404 - Page Not Found'));
 
     return <>
         <HeaderAnimation small />
