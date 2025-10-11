@@ -1,5 +1,3 @@
-"use server"
-
 export const runtime = 'nodejs';
 import { CommentPayload, DataStructure, DataType, DataUserPayload, ErrorReportPayload } from "./data_types";
 import { onComment, onConnectionReport as onUserData, onErrorReport } from "./database/handle_post";
@@ -50,7 +48,7 @@ async function handlePost(request: Request) : Promise<Response> {
 
 export async function POST(request: Request) {
     try {
-        return handlePost(request);
+        return await handlePost(request);
     }
     catch (reason) {
         const message = reason instanceof Error ? reason.message : 'Unexpected error occurred';
