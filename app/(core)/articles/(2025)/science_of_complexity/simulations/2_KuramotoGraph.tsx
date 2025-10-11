@@ -6,17 +6,22 @@ import logError from "../logic/api_manager";
 import styles from './2_KuramotoGraph.module.css';
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { FirefliesSynchronisation } from "./2_FirefliesSynchronisation";
+import errorStyles from '../logic/simulations/SimulationError.module.css';
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className={styles['error-simulation']}>
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
 }
 
 function setSVG(refCanvas: React.RefObject<SVGSVGElement | null>, refCanvasParent: React.RefObject<HTMLDivElement | null>, setSynchronisationValue: (value: number) => void) {
+    // Clear previous SVG
+    if (!refCanvas.current || !refCanvasParent.current) return;
+    d3.select(refCanvas.current).selectAll("*").remove();
+    
     // set the dimensions and margins of the graph
     const widthRaw = refCanvasParent.current?.clientWidth || 100;
     const aspectRatio = 0.8; // 4/5

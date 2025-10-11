@@ -1,7 +1,6 @@
 import { Simulation3DMagnets } from "../simulations/1_Simulation3DMagnets";
-import { CheckList, Citation, GradientText, GraphList, IMath, MoreInformations, Note, Question, Separator, IColor, TheoristQuestions, VSpace } from "../logic/text/TextEffects";
+import { CheckList, Citation, GradientText, GraphList, IMath, MoreInformations, Note, Question, Separator, IColor, TheoristQuestions, VSpace, IMathBlock } from "../logic/text/TextEffects";
 import { Paragraph, Part, Section } from "../logic/text/Article";
-import { MathJax } from "better-react-mathjax";
 import { ZoomingOnMagnet } from "../simulations/1_ZommingOnMagnet";
 import { MagnetsInteraction } from "../simulations/1_MagnetsInteraction";
 import { IsingSimulation } from "../simulations/1_IsingSimulation";
@@ -117,13 +116,13 @@ export function Part1() {
             <MoreInformations title="Energy minimization">
                 <Paragraph>
                     In physics, a core principle is that systems tend to <i>minimize their energy</i>. In our case, the <strong>energy</strong> of a given atom <IMath>j</IMath> can be written as
-                    <MathJax>{`$$ E_j = - J \\sum_{j'\\ \\in\\ \\mathrm{neighbors\\  of\\ } j} S_j\\, S_{j'}, $$`}</MathJax>
-                    where <IMath>J</IMath> is a positive constant that represents the <i>strength of the interaction between neighboring arrows</i>. From this relation, if <IMath>S_j</IMath> and <MathJax inline>{`$S_\{j'\}$`}</MathJax> are aligned (both <IMath type="magnet-north">+1</IMath> or both <IMath type="magnet-south">-1</IMath>), the energy is <i>negative</i>, meaning that this configuration is <i>better for the system</i>. If they are opposite, the energy is <i>positive</i>. This means that, as we wanted, the system <strong>prefers to align</strong> the <IColor type="electron" bold>spins</IColor>.
+                    <IMathBlock>{`E_j = - J \\sum_{j'\\ \\in\\ \\mathrm{neighbors\\  of\\ } j} S_j\\, S_{j'},`}</IMathBlock>
+                    where <IMath>J</IMath> is a positive constant that represents the <i>strength of the interaction between neighboring arrows</i>. From this relation, if <IMath>S_j</IMath> and <IMath>{`S_\{j'\}`}</IMath> are aligned (both <IMath type="magnet-north">+1</IMath> or both <IMath type="magnet-south">-1</IMath>), the energy is <i>negative</i>, meaning that this configuration is <i>better for the system</i>. If they are opposite, the energy is <i>positive</i>. This means that, as we wanted, the system <strong>prefers to align</strong> the <IColor type="electron" bold>spins</IColor>.
                 </Paragraph>
 
                 <Paragraph>
                     In quantum mechanics, <strong>energy minimization</strong> is a fundamental principle. Instead of talking about the total energy <IMath>E</IMath> of the system, we use the letter <IColor type="electron" bold>H</IColor> and call it the <IColor type="electron" bold>Hamiltonian</IColor>. Here, it is the sum of the energies of all the atoms in the system:
-                    <MathJax>{`$$ H = - J \\sum_{j=1}^N \\sum_{j'\\, \\in\\, \\mathrm{neighbors\\  of\\ } j} S_j\\, S_{j'}. $$`}</MathJax>
+                    <IMathBlock>{`H = - J \\sum_{j=1}^N \\sum_{j'\\, \\in\\, \\mathrm{neighbors\\  of\\ } j} S_j\\, S_{j'}.`}</IMathBlock>
                 </Paragraph>
             </MoreInformations>
             <Question>
@@ -131,7 +130,7 @@ export function Part1() {
             </Question>
             <Paragraph>
                 For this, we need to define the <Magnet italic>total magnetization</Magnet> that we write as <IMath>M</IMath>, which is what we usually mean when we talk about <strong>how strong</strong> a magnet is and in <strong>which direction</strong> it is pointing. It is simply the average of all the spins' orientations, <i>a sort of average arrow</i>, defined as
-                <MathJax>{`$$ M = \\frac{1}{N} \\sum_{j=1}^N S_j. $$`}</MathJax>
+                <IMathBlock>{`M = \\frac{1}{N} \\sum_{j=1}^N S_j.`}</IMathBlock>
             </Paragraph>
             <Note>
                 The division by <IMath>N</IMath> keeps <IMath>M</IMath> between <IMath type="magnet-north">+1</IMath> and <IMath type="magnet-south">-1</IMath>, making it easy to interpret.  Again, the <IColor type="magnet-north" bold italic>tip</IColor> of the arrow points to the <IColor type="magnet-north" bold italic>north</IColor>, and the <IColor type="magnet-south" bold italic>tail</IColor> points to the <IColor type="magnet-south" bold italic>south</IColor>.

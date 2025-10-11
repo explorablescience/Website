@@ -10,11 +10,12 @@ import { SpinsLattice } from "./models/SpinsLattice";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import logError from "../logic/api_manager";
 import { useIsVisible } from "../logic/utils";
+import errorStyles from '../logic/simulations/SimulationError.module.css';
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className={styles['error-simulation']}>
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -22,7 +23,7 @@ function ErrorDOM() {
 function ErrorDOMSmall() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className={styles['error-simulation custom-simulation-error']}>
+    return <div className={`${errorStyles['error-simulation']} ${styles['custom-simulation-error']}`}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;

@@ -5,11 +5,12 @@ import logError from "../logic/api_manager";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { useIsVisible } from "../logic/utils";
 import styles from "./0_HeaderSimulation.module.css";
+import errorStyles from '../logic/simulations/SimulationError.module.css';
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className={styles['header-error-simulation']}>
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;

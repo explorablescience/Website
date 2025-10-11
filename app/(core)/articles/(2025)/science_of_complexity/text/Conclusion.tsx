@@ -9,11 +9,12 @@ import { IColor, Separator, Sources } from "../logic/text/TextEffects";
 import { Firefly } from "./Part2";
 import { Fish } from "./Part3";
 import { Magnet } from "./Part1";
+import errorStyles from '../logic/simulations/SimulationError.module.css';
 
 function ConclusionSimulationsDivError() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className={styles['error-simulation']}>
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went wrong with the simulations.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -22,7 +23,7 @@ function ConclusionSimulationsDivError() {
 function ConclusionSimulationsDiv() {
     return <ErrorBoundary FallbackComponent={ConclusionSimulationsDivError} onError={logError}>
         <div className={styles['conclusion-simulations-div']}>
-            <IsingSimulation customT={3.0} />
+            <IsingSimulation />
             <FirefliesSynchronisation omegaActivated={true} showSliders={false} conclusion />
             <FishSchool showSliders={false} conclusion />
         </div>

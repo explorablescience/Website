@@ -4,11 +4,12 @@ import { ErrorBoundary, useErrorBoundary } from 'react-error-boundary';
 import logError from '../api_manager';
 import { idFromTitle } from '../utils';
 import page_styles from '../../page.module.css'
+import errorStyles from '../simulations/SimulationError.module.css';
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className={styles['error-simulation']}>
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went very wrong in the article.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;

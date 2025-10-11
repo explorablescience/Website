@@ -5,11 +5,12 @@ import { JSX, useEffect, useRef, useState } from "react";
 import logError from "../logic/api_manager";
 import styles from './1_IsingMagnetizationGraph.module.css';
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
+import errorStyles from '../logic/simulations/SimulationError.module.css';
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className="error-simulation">
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -122,6 +123,10 @@ function CanvasSimulation(props: { magnetization: number }): JSX.Element {
 }
 
 function setSVG(refCanvas: React.RefObject<SVGSVGElement | null>, refCanvasParent: React.RefObject<HTMLDivElement | null>, setMagnetizationValue: (value: number[]) => void) {
+    // Clear previous SVG
+    if (!refCanvas.current || !refCanvasParent.current) return;
+    d3.select(refCanvas.current).selectAll("*").remove();
+    
     // set the dimensions and margins of the graph
     const widthRaw = refCanvasParent.current?.clientWidth || 100;
     const aspectRatio = 0.8; // 4/5

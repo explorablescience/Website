@@ -9,18 +9,7 @@ import { Part1 } from "./text/Part1";
 import { Part2 } from "./text/Part2";
 import { Part3 } from "./text/Part3";
 import styles from './page.module.css'
-import { ReactNode, useLayoutEffect, useState } from "react";
 import { MathJaxContext } from "better-react-mathjax";
-
-const DefaultOnSSR: React.FC = () => null
-
-export const NoSSR: React.FC<{ children: ReactNode; onSSR?: ReactNode }> = ({ children, onSSR = <DefaultOnSSR /> }) => {
-    const [onBrowser, setOnBrowser] = useState(false)
-    useLayoutEffect(() => {
-        setOnBrowser(true)
-    }, [])
-    return <>{onBrowser ? children : onSSR}</>
-}
 
 export default function ScienceComplexityApp() {
     // Custom MathJax macros
@@ -29,7 +18,7 @@ export default function ScienceComplexityApp() {
         color: [`\\class{soc-texcolor-#1}{#2}`, 2],
     };
     
-    return <NoSSR>
+    return <>
         <MathJaxContext config={{
             loader: { load: ['[tex]/html'] },
             tex: {
@@ -85,5 +74,5 @@ export default function ScienceComplexityApp() {
                 <CommentsForm />
             </Article>
         </MathJaxContext>
-    </NoSSR>
+    </>
 }

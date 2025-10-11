@@ -1,5 +1,4 @@
-import { MathJax } from "better-react-mathjax";
-import { GradientText, IColor, IMath, MoreInformations, Note, Question, Separator, TheoristQuestions } from "../logic/text/TextEffects";
+import { GradientText, IColor, IMath, IMathBlock, MoreInformations, Note, Question, Separator, TheoristQuestions } from "../logic/text/TextEffects";
 import { Paragraph, Part, Section } from "../logic/text/Article";
 import { Firefly } from "./Part2";
 import { FishSchool } from "../simulations/3_FishSchool";
@@ -42,7 +41,7 @@ export function Part3() {
                     <li>The <IColor type="coupling" bold>interaction strength</IColor> is now how strongly a given fish wants to <IColor type="coupling">align</IColor> with its neighbors.</li>
                 </ul>
                 Finally, the equation that describes how the angle <IMath>{`\\color{electron}{\\theta}_j`}</IMath> of a given fish <IMath>j</IMath> evolves over time is
-                <MathJax>{`$$ \\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j) + \\eta(t) \\sqrt{\\color{temperature}{T}}.$$`}</MathJax>
+                <IMathBlock>{`\\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j) + \\eta(t) \\sqrt{\\color{temperature}{T}}.`}</IMathBlock>
             </Paragraph>
             <Note>
                 Note how we only changed our view again, and that the <strong>equation stayed</strong> (<i>almost</i>) <strong>exactly the same</strong>!
@@ -50,7 +49,7 @@ export function Part3() {
             <MoreInformations title="Velocity and position update">
                 <Paragraph>
                     The way we handle the <IColor type="magnet" bold>movement</IColor> of the fishes is a bit more complex than just updating their angle. At each time, we first update each <IMath>{`\\color{electron}{\\theta}_j`}</IMath> of every fish, and then update their <IColor type="magnet" bold>position</IColor> <IMath>{`\\color{magnet}{\\mathbf{r}}_j`}</IMath>, according to the relation
-                    <MathJax>{`$$ \\color{magnet}{\\mathbf{r}}_j(t + \\Delta t) = \\color{magnet}{\\mathbf{r}}_j(t) + v_0 \\Delta t \\left( \\cos \\color{electron}{\\theta}_j(t),\\, \\sin \\color{electron}{\\theta}_j(t) \\right),$$`}</MathJax>
+                    <IMathBlock>{`\\color{magnet}{\\mathbf{r}}_j(t + \\Delta t) = \\color{magnet}{\\mathbf{r}}_j(t) + v_0 \\Delta t \\left( \\cos \\color{electron}{\\theta}_j(t),\\, \\sin \\color{electron}{\\theta}_j(t) \\right),`}</IMathBlock>
                     where we assume that each fish swims at a constant speed <IMath>v_0</IMath>. Without entering into too many details, this update scheme is very typical in simulations. It is called the <i>Euler method</i>, and can be directly derived from Newton's laws of motion.
                 </Paragraph>
             </MoreInformations>

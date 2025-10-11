@@ -467,6 +467,16 @@ export function FirefliesSynchronisation(props: {
             canvasRef={canvasRef}
             onChangeVisibleState={setVisible}
             is2D />
-        <SimulationLogic canvasRef={canvasRef} aspectRatio={aspectRatio} temperature={temperature} coupling={coupling / 50.0} showSliders={props.showSliders} drawFireflies={drawFireflies} omegaActivated={props.omegaActivated} fakeSynchronisation={props.fakeSynchronisation} conclusion={props.conclusion} isVisible={visible} />
+        <SimulationLogic
+            canvasRef={canvasRef}
+            aspectRatio={aspectRatio}
+            temperature={temperature}
+            coupling={coupling / 50.0}
+            showSliders={props.showSliders}
+            drawFireflies={drawFireflies}
+            omegaActivated={props.omegaActivated}
+            fakeSynchronisation={props.fakeSynchronisation}
+            conclusion={props.conclusion}
+            isVisible={visible} />
     </>;
 }

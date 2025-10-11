@@ -1,6 +1,5 @@
-import { MathJax } from "better-react-mathjax";
 import { Paragraph, Part, Section } from "../logic/text/Article";
-import { GradientText, IColor, IMath, MoreInformations, Note, Question, Separator, TheoristQuestions, VSpace } from "../logic/text/TextEffects";
+import { GradientText, IColor, IMath, IMathBlock, MoreInformations, Note, Question, Separator, TheoristQuestions, VSpace } from "../logic/text/TextEffects";
 import { Magnet } from "./Part1";
 import { Fish } from "./Part3";
 import { FirefliesSynchronisation } from "../simulations/2_FirefliesSynchronisation";
@@ -45,7 +44,7 @@ export function Part2() {
             </Paragraph>
             <Paragraph>
                 We can now rewrite our earlier algorithm as the equation
-                <MathJax>{`$$ \\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j). $$`}</MathJax>
+                <IMathBlock>{`\\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j).`}</IMathBlock>
 
                 Let's break this down:
                 <ul>
@@ -80,7 +79,7 @@ export function Part2() {
             </MoreInformations>
             <Paragraph>
                 So our final equation becomes the so-called <strong>XY model</strong>
-                <MathJax>{`$$ \\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j) + \\eta(t) \\sqrt{\\color{temperature}{T}}. $$`}</MathJax>
+                <IMathBlock>{`\\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j) + \\eta(t) \\sqrt{\\color{temperature}{T}}.`}</IMathBlock>
             </Paragraph>
             <XYModel showTSlider={true} title="XY Model" description={<>
                 <Paragraph>
@@ -147,7 +146,7 @@ export function Part2() {
             </Question>
             <Paragraph>
                 Oops! We forgot to add in our equation that each little arrow now <IColor type="electron" italic>rotates continuously</IColor> over time. We write the  <IColor type="electron" bold>speed</IColor> of the rotation of each firefly as <IMath>{`\\color{electron}{\\omega}_j`}</IMath>. So let's add this to our model that becomes
-                <MathJax>{`$$ \\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{electron}{\\omega}_j + \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j) + \\eta(t) \\sqrt{\\color{temperature}{T}}.$$`}</MathJax>
+                <IMathBlock>{`\\frac{\\mathrm{d}\\color{electron}{\\theta}_j}{\\mathrm{d}t} = \\color{electron}{\\omega}_j + \\color{coupling}{K} \\sum_{j' \\mathrm{\\ that\\ are}\\atop \\mathrm{\\ neighbors\\  of\\ } j} \\sin(\\color{electron}{\\theta}_{j'} - \\color{electron}{\\theta}_j) + \\eta(t) \\sqrt{\\color{temperature}{T}}.`}</IMathBlock>
             </Paragraph>
             <Note>
                 Here, we took the frequency <IMath>\omega_j</IMath> of each firefly from a <i>Gaussian distribution</i>.
@@ -186,8 +185,8 @@ export function Part2() {
             
             <MoreInformations title="Mathematical definition">
                 <Paragraph>
-                    Mathematically, we can define this <IColor type="electron" bold>mean arrow</IColor> as a <strong>complex number</strong> <MathJax inline>{`$\\color{electron}{R} \\mathrm{e}^{\\mathrm{i}\\Phi}$`}</MathJax>, where <IMath type="electron">R</IMath> is the length of the arrow and <IMath>\Phi</IMath> is its angle
-                    <MathJax>{`$$\\color{electron}{R} \\mathrm{e}^{\\mathrm{i}\\Phi} = \\frac{1}{N} \\sum_{j=1}^N e^{\\mathrm{i} \\color{electron}{\\theta}_j}.$$`}</MathJax>
+                    Mathematically, we can define this <IColor type="electron" bold>mean arrow</IColor> as a <strong>complex number</strong> <IMath>{`\\color{electron}{R} \\mathrm{e}^{\\mathrm{i}\\Phi}`}</IMath>, where <IMath type="electron">R</IMath> is the length of the arrow and <IMath>\Phi</IMath> is its angle
+                    <IMathBlock>{`\\color{electron}{R} \\mathrm{e}^{\\mathrm{i}\\Phi} = \\frac{1}{N} \\sum_{j=1}^N e^{\\mathrm{i} \\color{electron}{\\theta}_j}.`}</IMathBlock>
                 </Paragraph>
                 <Paragraph>
                     So why not simply take the <IColor type="electron" italic>average of the angles</IColor>? Because angles are <IColor type="electron" bold>periodic</IColor>, meaning that if we take the <i>average</i> of two angles that are close to <IMath>0</IMath> and <IMath>2\pi</IMath>, we would get something close to <IMath>\pi</IMath>, which is <i>not what we want</i>. Instead, we use <strong>complex numbers</strong> to represent the angles, which allows us to take into account this <IColor type="electron" bold>periodic nature</IColor>.

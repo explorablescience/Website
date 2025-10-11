@@ -7,11 +7,12 @@ import styles from "./Simulation.module.css";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import logError from "../api_manager";
 import { useIsVisible } from "../utils";
+import errorStyles from './SimulationError.module.css';
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className="error-simulation">
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;

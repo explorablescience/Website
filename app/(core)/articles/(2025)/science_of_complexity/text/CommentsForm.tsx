@@ -85,7 +85,7 @@ export function CommentsForm() {
                         {sending ? "Sending..." : "Contact me"}
                     </button>
                     {message && (
-                        <div className={styles[`comments-message comments-${message.type}`]} role="alert">
+                        <div className={`${styles[`comments-message`]} ${styles[`comments-${message.type}`]}`} role="alert">
                             {message.text}
                         </div>
                     )}

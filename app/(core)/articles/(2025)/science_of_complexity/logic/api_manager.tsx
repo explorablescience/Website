@@ -134,14 +134,15 @@ const logUserInfo = async () => {
         }
     };
 
-    // Send error report to server
-    fetch("https://api.mecanicascience.fr", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    });
+    console.log(payload);
+    // // Send error report to server
+    // fetch("https://api.mecanicascience.fr", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(payload)
+    // });
 };
 
 // Called when a component registers an error
@@ -186,14 +187,15 @@ const logError = async (error: Error, info?: ErrorInfo) => {
         }
     };
 
-    // Send error report to server
-    fetch("https://api.mecanicascience.fr", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    });
+    console.log(payload);
+    // // Send error report to server
+    // fetch("https://api.mecanicascience.fr", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(payload)
+    // });
 }
 
 // Called when a user submits a comment
@@ -225,16 +227,18 @@ const logComment = async (name: string, email: string, messageContent: string): 
         }
     };
 
-    // Send error report to server
-    const response = await fetch("https://api.mecanicascience.fr", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    });
+    console.log(payload);
+    // // Send error report to server
+    // const response = await fetch("https://api.mecanicascience.fr", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(payload)
+    // });
 
-    return response.ok;
+    // return response.ok;
+    return true;
 };
 
 export default logError;

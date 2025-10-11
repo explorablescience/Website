@@ -7,11 +7,12 @@ import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import logError from "../api_manager";
 import Image from "next/image";
+import errorStyles from './SimulationError.module.css';
 
 import type { FallbackProps } from "react-error-boundary";
 
 function ErrorDOM({ resetErrorBoundary }: FallbackProps) {
-    return <div className={styles['error-simulation']}>
+    return <div className={errorStyles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetErrorBoundary}>Try again</button>
     </div>;

@@ -1,6 +1,6 @@
 'use client'
 
-import { JSX, useRef, useState } from 'react';
+import { JSX, ReactNode, useLayoutEffect, useRef, useState } from 'react';
 import styles from './TextEffects.module.css';
 import quote_open from './assets/quote_open.svg';
 import quote_closed from './assets/quote_closed.svg';
@@ -181,11 +181,37 @@ export function CheckList(props: { items: { label: string, checked: boolean, des
     </>
 }
 
+
+function DefaultOnSSRMath({ rawChildren, multiLine }: { rawChildren: ReactNode, multiLine?: boolean }) {
+    return <span style={{ fontFamily: 'serif', fontStyle: 'italic', backgroundColor: '#fbfbfb', padding: multiLine ? '20px 4px' : '2px 4px', borderRadius: '4px', fontSize: multiLine ? '1.1em' : '1em', display: multiLine ? 'block' : 'inline-block', whiteSpace: multiLine ? 'pre-wrap' : 'normal', width: multiLine ? '100%' : 'auto', overflowX: multiLine ? 'auto' : 'visible', margin: multiLine ? 'auto 10px' : '0', textAlign: multiLine ? 'center' : 'initial' }}>
+        {rawChildren?.toString().replace(/\s+/g, ' ').trim()}
+    </span>
+}
+function NoSSRMath({ children, rawChildren, multiLine }: { children: ReactNode, rawChildren: ReactNode, multiLine?: boolean }) {
+    const [onBrowser, setOnBrowser] = useState(false)
+    useLayoutEffect(() => {
+        setOnBrowser(true)
+    }, [])
+    return <>{onBrowser ? children : <DefaultOnSSRMath rawChildren={rawChildren} multiLine={multiLine} />}</>
+}
+
 export function IMath(props: { children: string, type?: string }) {
     if (!props.type) {
-        return <MathJax inline>{`\$${props.children}\$`}</MathJax>;
+        return <NoSSRMath rawChildren={props.children}>
+            <MathJax inline>{`\$${props.children}\$`}</MathJax>
+        </NoSSRMath>;
     }
-    return <IColor type={props.type}><MathJax inline>{`\$${props.children}\$`}</MathJax></IColor>;
+    return <IColor type={props.type}>
+        <NoSSRMath rawChildren={props.children}>
+            <MathJax inline>{`\$${props.children}\$`}</MathJax>
+        </NoSSRMath>
+    </IColor>;
+}
+
+export function IMathBlock(props: { children: string }) {
+    return <NoSSRMath rawChildren={props.children} multiLine>
+        <MathJax style={{overflowX: 'auto', overflowY: 'hidden'}}>{`$$${props.children}$$`}</MathJax>
+    </NoSSRMath>;
 }
 
 export function GraphList(props: { items: JSX.Element[], customWidth?: { arrow: string, bar: string } }) {

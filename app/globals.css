@@ -5,6 +5,23 @@ html {
     overflow-x: hidden;
 }
 
+ol, ul {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 26px;
+}
+ol {
+    list-style-type: decimal;
+}
+ul {
+    list-style: circle;
+}
+@media (min-width: 750px) {
+    ol, ul {
+        padding-inline-start: 35px;
+    }
+}
+
 :root {
     --color-green: #4aa96e;
     --color-background-light: #171f2d;

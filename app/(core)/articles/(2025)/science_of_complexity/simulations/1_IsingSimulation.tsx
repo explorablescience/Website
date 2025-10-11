@@ -231,7 +231,7 @@ export function IsingSimulation(props: {
     useTemperature?: boolean; // Optional prop to indicate if temperature should be used in the simulation
     customT?: number; // Optional custom temperature value
 }): JSX.Element {
-    const [visible] = useState(false);
+    const [visible, setVisible] = useState(false);
     const [temperature, setTemperature] = useState(props.customT == null ? 7 : props.customT);
     const canvasRef = createRef<HTMLCanvasElement>();
     const aspectRatio = useMemo(() => 16/9, []);
@@ -255,6 +255,8 @@ export function IsingSimulation(props: {
             description={props.description}
             controls={props.useTemperature ? controls : <></>}
             canvasRef={canvasRef}
+            onChangeVisibleState={setVisible}
+            is2D
         />
         <SimulationLogic
             canvasRef={canvasRef}

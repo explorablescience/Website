@@ -3,19 +3,20 @@
     margin: -6px 0 20px 0;
     border: 3px solid black;
     border-radius: 5px;
+    height: 200px;
 }
-.conclusion-simulations-div .simulation-container {
+.conclusion-simulations-div > div {
     margin: 0;
     flex: 1;
 }
-.conclusion-simulations-div .simulation-canvas-container {
+.conclusion-simulations-div > div > div {
     aspect-ratio: unset;
     display: contents;
 }
 .conclusion-simulations-div canvas {
     border-radius: 0px;
 }
-.conclusion-simulations-div .simulation-controls {
+.conclusion-simulations-div {
     margin: 0;
 }
 
