@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { Separator } from "../logic/text/TextEffects";
 import styles from "./CommentsForm.module.css";
-import logError, { logComment } from "../logic/api_manager";
+import logger from "@/app/api/client/logger";
+import { postComment } from "@/app/api/client/post_manager";
 
 export function CommentsForm() {
 
@@ -35,20 +36,20 @@ export function CommentsForm() {
         setSending(true);
         
         // Send message
-        logComment(name, email, messageContent).then(success => {
+        postComment(name, email, messageContent).then(success => {
             if (success) {
                 setMessage({ type: "success", text: "Thank you for your message! I'll get back to you soon." });
                 setName("");
                 setEmail("");
                 setMessageContent("");
             } else {
-                logError(new Error("Failed to send comment (1)."));
-                setMessage({ type: "error", text: "There was an error sending your message.\nPlease try again later or reach me directly using mecanicascience@gmail.com." });
+                logger.error(new Error("Failed to send comment (1)."));
+                setMessage({ type: "error", text: "There was an error sending your message.\nPlease try again later or reach me directly using explorablesci@gmail.com." });
             }
             setSending(false);
         }).catch(() => {
-            logError(new Error("Failed to send comment (2)."));
-            setMessage({ type: "error", text: "There was an error sending your message.\nPlease try again later or reach me directly using mecanicascience@gmail.com." });
+            logger.error(new Error("Failed to send comment (2)."));
+            setMessage({ type: "error", text: "There was an error sending your message.\nPlease try again later or reach me directly using explorablesci@gmail.com." });
             setSending(false);
         });
     }
@@ -94,3 +95,4 @@ export function CommentsForm() {
         </div>
     </>;
 }
+

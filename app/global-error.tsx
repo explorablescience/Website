@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './error.module.css'
-import logger from "./api/utils/logger";
+import logger from "./api/client/logger";
 import Header from './components/header/header';
 import Button from './components/ui/buttons/button';
 import HeaderAnimation from './components/header/header_animation';

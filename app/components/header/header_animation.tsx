@@ -4,7 +4,7 @@ import styles from './header_animation.module.css'
 import { JSX, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
 import { ErrorBoundary } from 'react-error-boundary';
-import logger from '@/app/api/utils/logger';
+import logger from '@/app/api/client/logger';
 
 class Simulation {
     // Particles properties

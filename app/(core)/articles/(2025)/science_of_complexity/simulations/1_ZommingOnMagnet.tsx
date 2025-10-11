@@ -8,9 +8,9 @@ import { SimulationCanvas } from "../logic/simulations/SimulationCanvas";
 import styles from "./1_ZommingOnMagnet.module.css";
 import { SpinsLattice } from "./models/SpinsLattice";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
-import logError from "../logic/api_manager";
 import { useIsVisible } from "../logic/utils";
 import errorStyles from '../logic/simulations/SimulationError.module.css';
+import { onReactError } from "@/app/api/client/logger";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
@@ -93,7 +93,7 @@ export function ZoomingOnMagnet(props: { title: string, description: JSX.Element
         setVisible(isVisible);
     });
     return <>
-        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
             <div className={styles['simulation-container']} ref={simulationRef}>
                 {props.description && <div className={styles['simulation-description']}>
                     <div className={styles['simulation-description-title']}>{props.title}</div>

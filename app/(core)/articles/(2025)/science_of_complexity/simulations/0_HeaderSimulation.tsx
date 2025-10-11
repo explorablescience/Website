@@ -1,11 +1,11 @@
 'use client'
 
 import { JSX, useState, createRef, useMemo, useEffect, useRef } from "react";
-import logError from "../logic/api_manager";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { useIsVisible } from "../logic/utils";
 import styles from "./0_HeaderSimulation.module.css";
 import errorStyles from '../logic/simulations/SimulationError.module.css';
+import logger, { onReactError } from "@/app/api/client/logger";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
@@ -334,7 +334,7 @@ function SimulationLogic({ canvasRef, aspectRatio, isVisible }: { canvasRef: Rea
 
         // Get canvas
         const canvas = canvasRef.current;
-        if (!canvas) logError(new Error("Canvas reference is null (Header simulation)"));
+        if (!canvas) logger.error(new Error("Canvas reference is null in the header simulation (Science of Complexity article)"));
         const cv = canvas!;
 
         // Set canvas dimensions based on target
@@ -347,7 +347,7 @@ function SimulationLogic({ canvasRef, aspectRatio, isVisible }: { canvasRef: Rea
 
         // Get context
         const context = cv.getContext("2d");
-        if (!context) logError(new Error("Canvas context is null (Header simulation)"));
+        if (!context) logger.error(new Error("Canvas context is null in the header simulation (Science of Complexity article)"));
         const ctx = context!;
 
         // Tick loop
@@ -398,7 +398,7 @@ export function HeaderSimulation(): JSX.Element {
     useIsVisible(simulationRef, (isVisible) => setVisible(isVisible));
 
     return <>
-        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
             <SimulationLogic canvasRef={canvasRef} aspectRatio={aspectRatio} isVisible={visible} />
             <div className={styles['simulation-header-canvas-container']} ref={simulationRef}>
                 <canvas className={styles['simulation-header-canvas']} ref={canvasRef} />

@@ -5,11 +5,11 @@ import styles from './SimulationCanvas.module.css';
 import icon_3d from './assets/icon_3d.svg';
 import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import logError from "../api_manager";
 import Image from "next/image";
 import errorStyles from './SimulationError.module.css';
 
 import type { FallbackProps } from "react-error-boundary";
+import { onReactError } from "@/app/api/client/logger";
 
 function ErrorDOM({ resetErrorBoundary }: FallbackProps) {
     return <div className={errorStyles['error-simulation']}>
@@ -43,7 +43,7 @@ export function SimulationCanvas(props: {
     const show3DIcon = props.show3DIcon != false && !props.is2D; // Default to true if not specified and not a 2D simulation
 
     return <>
-        <ErrorBoundary FallbackComponent={props.customErrorComponent || ErrorDOM} onError={logError}>
+        <ErrorBoundary FallbackComponent={props.customErrorComponent || ErrorDOM} onError={onReactError}>
             <Suspense fallback={<LoaderDOM />}>
                 <div className={styles['simulation-canvas-container']} style={{ aspectRatio: props.aspectRatio || '16/9' }}>
                     <div className={styles['simulation-canvas-icon']}>

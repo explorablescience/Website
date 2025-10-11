@@ -5,9 +5,9 @@ import { SimulationCanvas } from "./SimulationCanvas";
 import { SimulationControls } from "./Sliders";
 import styles from "./Simulation.module.css";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
-import logError from "../api_manager";
 import { useIsVisible } from "../utils";
 import errorStyles from './SimulationError.module.css';
+import { onReactError } from "@/app/api/client/logger";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
@@ -36,7 +36,7 @@ export function Simulation(props: {
     });
 
     return <>
-        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
             <div className={styles['simulation-container']} ref={simulationRef}>
                 {props.description && <div className={styles['simulation-description']}>
                     <div className={styles['simulation-description-title']}>{props.title}</div>

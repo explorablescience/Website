@@ -5,6 +5,7 @@ import styles from './layout.module.css'
 import { inter } from "./fonts.ts";
 import "./globals.css";
 import Script from "next/script";
+import { CustomAnalytics } from './api/client/analytics.tsx';
 
 export const metadata: Metadata = {
     title: {
@@ -86,6 +87,8 @@ export default function RootLayout({
             </head>
             <body className={styles.body}>
                 {children}
+
+                <CustomAnalytics />
                 <Analytics />
                 <SpeedInsights />
             </body>

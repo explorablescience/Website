@@ -2,11 +2,11 @@
 
 import * as d3 from "d3";
 import { JSX, useEffect, useMemo, useRef, useState } from "react";
-import logError from "../logic/api_manager";
 import styles from './2_KuramotoGraph.module.css';
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { FirefliesSynchronisation } from "./2_FirefliesSynchronisation";
 import errorStyles from '../logic/simulations/SimulationError.module.css';
+import { onReactError } from "@/app/api/client/logger";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
@@ -169,7 +169,7 @@ export function KuramotoGraph(props: { title?: string, description?: JSX.Element
 
     // HTML Content
     return <>
-        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
             <div className={styles['kuramoto-simulation-container']}>
                 {props.title && props.description && <div className={styles['simulation-description']}>
                     <div className={styles['simulation-description-title']}>{props.title}</div>
@@ -179,12 +179,12 @@ export function KuramotoGraph(props: { title?: string, description?: JSX.Element
                 </div>}
                 <div className={styles['kuramoto-graph-simulation-container']}>
                     <div ref={refCanvasParent} className={styles['kuramoto-graph-canvas-container-svg']}>
-                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
                             <svg width={460} height={400} ref={refCanvas} />
                         </ErrorBoundary>
                     </div>
                     <div className={styles['kuramoto-graph-canvas-container']}>
-                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
                             { ffSync }
                         </ErrorBoundary>
                     </div>

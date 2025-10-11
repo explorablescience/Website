@@ -1,0 +1,34 @@
+{
+    "articles": [
+        {
+            "id": "science_of_complexity",
+            "title": "The Science of Complexity",
+            "description": "Discover how complex systems emerge from simple interactions. Explore concepts like phase transitions, self-organization, and emergence through interactive simulations.",
+            "image": {
+                "url": "/articles/science_of_complexity/imgs/logo.webp",
+                "width": 640,
+                "height": 360,
+                "alt": "The Science of Complexity"
+            },
+            "keyword": "Complex Systems",
+            "year": "2025",
+            "date": "2025-09-01",
+            "pinned": true
+        },
+        {
+            "id": "general_relativity",
+            "title": "General Relativity",
+            "description": "Explore the fundamental principles of General Relativity and how they shape our understanding of gravity and the universe.",
+            "image": {
+                "url": "/articles/general_relativity/images/logo.webp",
+                "width": 640,
+                "height": 360,
+                "alt": "General Relativity"
+            },
+            "keyword": "Relativity",
+            "year": "2023",
+            "date": "2023-09-01",
+            "pinned": false
+        }
+    ]
+}

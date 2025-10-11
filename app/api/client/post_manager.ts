@@ -1,11 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-
 import { ErrorInfo } from "react";
+import { DataStructure, DataType } from "../data_types";
 
-export function TestErrorComponent() {
-    throw Error("This is an error!");
-    return <></>
+function isLocalhost() {
+    try {
+        if (typeof window === 'undefined') return true;
+        const host = window.location?.hostname || '';
+        if (host === 'localhost' || host === '127.0.0.1' || host === '192.168.0.44') return true;
+    } catch {
+        return true;
+    }
+    return false;
+}
+
+function getApiEndpoint() {
+    return '/api';
 }
 
 async function getIP() {
@@ -106,54 +115,38 @@ function getPerformancesMeasurements() {
     return performancesData;
 }
 
-// Called when the page is loaded
-const logUserInfo = async () => {
-    // Get IP Address
+export async function postUserInformations() {
+    // Create payload
     const ipAddress = await getIP();
-
-    // Performances measurements
-    const performancesData = getPerformancesMeasurements();
-
-    // Get window, document, navigator data
     const [windowData, documentData, navigatorData] = getWDNData();
-
-    // Creates error report payload
     const payload = {
-        source: {
-            website: "mecanicascience.fr",
-            page: "article_science_of_complexity"
-        },
-        type: "connection_report",
+        type: DataType.CONNECTION_REPORT,
         payload: {
             timestamp: new Date().toISOString(),
             ipAddress,
-            performances: performancesData,
             window: windowData,
             document: documentData,
             navigator: navigatorData
         }
-    };
+    } as DataStructure;
 
-    console.log(payload);
-    // // Send error report to server
-    // fetch("https://api.mecanicascience.fr", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(payload)
-    // });
+    // Send report to server
+    if (isLocalhost()) {
+        console.log('[Analytics] Skipped posting user informations (localhost/dev)', payload);
+    }
+    fetch(getApiEndpoint(), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
 };
 
-// Called when a component registers an error
-const logError = async (error: Error, info?: ErrorInfo) => {
-    // Get IP Address
+export async function postError(error: Error, info?: ErrorInfo) {
+    // Create payload
     const ipAddress = await getIP();
-
-    // Performances measurements
     const performancesData = getPerformancesMeasurements();
-
-    // Error data
     let errorData = {};
     try {
         errorData = {
@@ -165,17 +158,9 @@ const logError = async (error: Error, info?: ErrorInfo) => {
             componentStack: info?.componentStack || ""
         };
     } catch { }
-
-    // Get window, document, navigator data
     const [windowData, documentData, navigatorData] = getWDNData();
-
-    // Creates error report payload
     const payload = {
-        source: {
-            website: "mecanicascience.fr",
-            page: "article_science_of_complexity"
-        },
-        type: "error_report",
+        type: DataType.ERROR_REPORT,
         payload: {
             timestamp: new Date().toISOString(),
             ipAddress,
@@ -185,38 +170,32 @@ const logError = async (error: Error, info?: ErrorInfo) => {
             document: documentData,
             navigator: navigatorData
         }
-    };
+    } as DataStructure;
 
-    console.log(payload);
-    // // Send error report to server
-    // fetch("https://api.mecanicascience.fr", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(payload)
-    // });
+    // Send report to server
+    if (isLocalhost()) {
+        console.log('[Analytics] Skipped posting error report (localhost/dev)', payload);
+    }
+    console.log("Posting error report:", payload);
+    fetch(getApiEndpoint(), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
 }
 
-// Called when a user submits a comment
-const logComment = async (name: string, email: string, messageContent: string): Promise<boolean> => {
-    // Get IP Address
+export async function postComment(name: string, email: string, message: string): Promise<boolean> {
+    // Create payload
     const ipAddress = await getIP();
-
-    // Get window, document, navigator data
     const [windowData, documentData, navigatorData] = getWDNData();
-
-    // Creates error report payload
     const payload = {
-        source: {
-            website: "mecanicascience.fr",
-            page: "article_science_of_complexity"
-        },
-        type: "contact_form",
+        type: DataType.COMMENT,
         payload: {
             name,
             email,
-            message: messageContent,
+            message,
             trackingPayload: {
                 timestamp: new Date().toISOString(),
                 ipAddress,
@@ -227,19 +206,15 @@ const logComment = async (name: string, email: string, messageContent: string): 
         }
     };
 
-    console.log(payload);
-    // // Send error report to server
-    // const response = await fetch("https://api.mecanicascience.fr", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(payload)
-    // });
-
-    // return response.ok;
-    return true;
-};
-
-export default logError;
-export { logUserInfo, logComment };
+    // Send report to server
+    if (isLocalhost()) {
+        console.log('[Analytics] Skipped posting comment (localhost/dev)', payload);
+    }
+    return (await fetch(getApiEndpoint(), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })).ok;
+}

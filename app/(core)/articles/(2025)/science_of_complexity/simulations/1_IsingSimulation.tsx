@@ -3,7 +3,7 @@
 import { createRef, JSX, useEffect, useMemo, useRef, useState } from "react";
 import { Slider } from "../logic/simulations/Sliders";
 import { Simulation } from "../logic/simulations/Simulation";
-import logError from "../logic/api_manager";
+import logger from "@/app/api/client/logger";
 
 // Draw a big arrow on the right for total magnetization
 function canvas_arrow(context: CanvasRenderingContext2D, fromx: number, fromy: number, tox: number, toy: number, r: number) {
@@ -188,7 +188,7 @@ function SimulationLogic({ canvasRef, aspectRatio, temperature, useTemperature, 
 
         // Get canvas
         const canvas = canvasRef.current;
-        if (!canvas) logError(new Error("Canvas reference is null (Ising simulation)"));
+        if (!canvas) logger.error(new Error("Canvas reference is null in the Ising simulation (Science of Complexity article)"));
         const cv = canvas!;
 
         // Set canvas dimensions based on target
@@ -201,7 +201,7 @@ function SimulationLogic({ canvasRef, aspectRatio, temperature, useTemperature, 
 
         // Get context
         const context = cv.getContext("2d");
-        if (!context) logError(new Error("Canvas context is null (Ising simulation)"));
+        if (!context) logger.error(new Error("Canvas context is null in the Ising simulation (Science of Complexity article)"));
         const ctx = context!;
 
         // Tick loop

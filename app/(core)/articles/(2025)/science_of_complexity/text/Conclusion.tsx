@@ -3,13 +3,13 @@ import { IsingSimulation } from "../simulations/1_IsingSimulation";
 import { FirefliesSynchronisation } from "../simulations/2_FirefliesSynchronisation";
 import { FishSchool } from "../simulations/3_FishSchool";
 import styles from "./Conclusion.module.css";
-import logError from "../logic/api_manager";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { IColor, Separator, Sources } from "../logic/text/TextEffects";
 import { Firefly } from "./Part2";
 import { Fish } from "./Part3";
 import { Magnet } from "./Part1";
 import errorStyles from '../logic/simulations/SimulationError.module.css';
+import { onReactError } from "@/app/api/client/logger";
 
 function ConclusionSimulationsDivError() {
     const { resetBoundary } = useErrorBoundary();
@@ -21,7 +21,7 @@ function ConclusionSimulationsDivError() {
 }
 
 function ConclusionSimulationsDiv() {
-    return <ErrorBoundary FallbackComponent={ConclusionSimulationsDivError} onError={logError}>
+    return <ErrorBoundary FallbackComponent={ConclusionSimulationsDivError} onError={onReactError}>
         <div className={styles['conclusion-simulations-div']}>
             <IsingSimulation />
             <FirefliesSynchronisation omegaActivated={true} showSliders={false} conclusion />

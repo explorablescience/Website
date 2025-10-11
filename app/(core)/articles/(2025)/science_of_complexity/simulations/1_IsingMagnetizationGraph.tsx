@@ -2,10 +2,10 @@
 
 import * as d3 from "d3";
 import { JSX, useEffect, useRef, useState } from "react";
-import logError from "../logic/api_manager";
 import styles from './1_IsingMagnetizationGraph.module.css';
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import errorStyles from '../logic/simulations/SimulationError.module.css';
+import logger, { onReactError } from "@/app/api/client/logger";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
@@ -62,7 +62,7 @@ function CanvasSimulation(props: { magnetization: number }): JSX.Element {
     useEffect(() => {
         // Get canvas
         const canvas = canvasRef.current;
-        if (!canvas) logError(new Error("Canvas reference is null (Ising Magnetization simulation)"));
+        if (!canvas) logger.error(new Error("Canvas reference is null in the Ising Magnetization simulation (Science of Complexity article)"));
         const cv = canvas!;
 
         // Set canvas dimensions based on target
@@ -75,7 +75,7 @@ function CanvasSimulation(props: { magnetization: number }): JSX.Element {
 
         // Get context
         const context = cv.getContext("2d");
-        if (!context) logError(new Error("Canvas context is null (Ising Magnetization simulation)"));
+        if (!context) logger.error(new Error("Canvas context is null in the Ising Magnetization simulation (Science of Complexity article)"));
         const ctx = context!;
 
         // Conditions
@@ -290,7 +290,7 @@ export function IsingMagnetizationGraph(props: { title?: string, description?: J
 
     // HTML Content
     return <>
-        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
             <div className={styles['ising-simulation-container']}>
                 {props.title && props.description && <div className={styles['simulation-description']}>
                     <div className={styles['simulation-description-title']}>{props.title}</div>
@@ -300,17 +300,17 @@ export function IsingMagnetizationGraph(props: { title?: string, description?: J
                 </div>}
                 <div className={styles['ising-graph-simulation-container']}>
                     <div className={styles['ising-graph-canvas-container-up']}>
-                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
                             <CanvasSimulation magnetization={magnetizationValue[0]} />
                         </ErrorBoundary>
                     </div>
                     <div ref={refCanvasParent} className={styles['ising-graph-canvas-container-svg']}>
-                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
                             <svg width={460} height={400} ref={refCanvas} />
                         </ErrorBoundary>
                     </div>
                     <div className={styles['ising-graph-canvas-container-down']}>
-                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
+                        <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
                             <CanvasSimulation magnetization={magnetizationValue[1]} />
                         </ErrorBoundary>
                     </div>
