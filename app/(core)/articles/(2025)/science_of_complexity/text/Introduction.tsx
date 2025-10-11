@@ -58,11 +58,6 @@ function Widgets() {
     </>
 }
 
-function ErrorComponentTest() {
-    throw new Error("Test error component");
-    return <></>;
-}
-
 export function Introduction() {
     return <>
         <Part title="introduction" hideTitle>
@@ -86,7 +81,6 @@ export function Introduction() {
                 <br /><div style={{ height: "13px" }}></div>
                 And without any longer introduction, let's begin.
             </Paragraph>
-            <ErrorComponentTest />
         </Part>
     </>;
 }
