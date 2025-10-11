@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!sim) {
         return {}
     }
-    const title = `${sim.title} Simulation | ExplorableScience`
+    const title = `${sim.title} Simulation`
     const desc = sim.description.replace(/<c>(.*?)<\/c>/g, '$1');
 
     return {

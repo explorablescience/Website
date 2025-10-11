@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     if (!article) {
         return {}
     }
-    const title = `${article.title} | ExplorableScience`
+    const title = `${article.title}`
     const desc = article.description.replace(/<c>(.*?)<\/c>/g, '$1');
 
     return {
