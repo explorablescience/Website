@@ -5,7 +5,7 @@
             "title": "Tiding forces",
             "description": "This program aims to simulate the <c>tidal forces</c> on Earth, exerted under the influence of <c>gravitationnal interaction</c> with the Moon.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F3_simulation_forces_marees.png?alt=media",
+                "url": "/simulations/3_simulation_forces_marees.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Tiding forces"
@@ -22,7 +22,7 @@
             "title": "Wave propagation",
             "description": "This simulation helps to better understand what waves are, through the simulation of different wave types. For instance, <c>plane 2D waves</c>, <c>plane 3D waves</c> and <c>circular 3D waves</c>.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F6_wave_propagation.png?alt=media",
+                "url": "/simulations/6_wave_propagation.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Wave propagation"
@@ -39,7 +39,7 @@
             "title": "Heat equation",
             "description": "The heat equation describes the <c>temperature evolution</c> inside materials. Using the latest GPU technologies, this simulations aim to compute this <c>propagation</c> considering some <c>obstacles</c>.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F10_thermal_conduction.png?alt=media",
+                "url": "/simulations/10_thermal_conduction.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Heat equation"
@@ -56,7 +56,7 @@
             "title": "Lissajous curves",
             "description": "Lissajous curves are geometric shapes that regularly appears in physics, and very often in <c>optics</c>. This simulation allows to visualize these <c>different curves</c>.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F4_courbes_lissajous.png?alt=media",
+                "url": "/simulations/4_courbes_lissajous.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Lissajous curves"
@@ -73,7 +73,7 @@
             "title": "Coupled springs",
             "description": "<c>Coupling multiple springs</c> can, as their number increase to infinity, to simulate a <c>plane wave</c>. This program allows to better understand this phenomena.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F5_multiple_springs.png?alt=media",
+                "url": "/simulations/5_multiple_springs.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Coupled springs"
@@ -90,7 +90,7 @@
             "title": "Hydrogen atom",
             "description": "This simulation uses the latest GPU tools to view the <c>orbitals wavefunctions</c> of an <c>Hydrogen Atom</c>. The quantum numbers can be modified in real time.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F7_hydrogen_atom.png?alt=media",
+                "url": "/simulations/7_hydrogen_atom.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Hydrogen atom"
@@ -107,7 +107,7 @@
             "title": "Ising model",
             "description": "The Ising model is a model from Statistical Physics modelling <c>magnetism inside materials</c>. In this simulation, GPU is used to simulate this model in real time, using the <c>Metropolis Algorithm</c>.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F9_modele_ising.png?alt=media",
+                "url": "/simulations/9_modele_ising.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Ising model"
@@ -124,7 +124,7 @@
             "title": "Solar system",
             "description": "The Solar System is a physical system really complex to simulate. In this simulation, linked to the N-Body article (in french), a <c>simulation of this Solar System</c> is made.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F1_simulation_systeme_solaire.png?alt=media",
+                "url": "/simulations/1_simulation_systeme_solaire.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Solar system"
@@ -141,7 +141,7 @@
             "title": "Neuro-evolution algorithm",
             "description": "Realisation of a <c>Neuro-evolutive</c> algorithm that can train spaceships to hover, based on the <c>NEAT algorithm</c> (NeuroEvolution of Augmented Topologies).",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F8_neuro_evolution_landers.png?alt=media",
+                "url": "/simulations/8_neuro_evolution_landers.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Neuro-evolution algorithm"
@@ -158,7 +158,7 @@
             "title": "Electrostatic field",
             "description": "This project shows the <c>electrostatic line fields</c> beeing computed in real time. It computes and shows the field lines for entirely <c>customizable sources</c>.",
             "image": {
-                "url": "https://firebasestorage.googleapis.com/v0/b/mecanicascience.appspot.com/o/simulations%2F2_champ_electrique.png?alt=media",
+                "url": "/simulations/2_champ_electrique.png",
                 "width": 800,
                 "height": 600,
                 "alt": "Electrostatic field"

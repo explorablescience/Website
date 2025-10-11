@@ -132,7 +132,7 @@ export async function postUserInformations() {
 
     // Send report to server
     if (isLocalhost()) {
-        console.log('[Analytics] Skipped posting user informations (localhost/dev)', payload);
+        console.log('[Analytics] Posting user informations (localhost/dev)', payload);
     }
     fetch(getApiEndpoint(), {
         method: "POST",
@@ -174,9 +174,8 @@ export async function postError(error: Error, info?: ErrorInfo) {
 
     // Send report to server
     if (isLocalhost()) {
-        console.log('[Analytics] Skipped posting error report (localhost/dev)', payload);
+        console.log('[Analytics] Posting error report (localhost/dev)', payload);
     }
-    console.log("Posting error report:", payload);
     fetch(getApiEndpoint(), {
         method: "POST",
         headers: {
@@ -208,7 +207,7 @@ export async function postComment(name: string, email: string, message: string):
 
     // Send report to server
     if (isLocalhost()) {
-        console.log('[Analytics] Skipped posting comment (localhost/dev)', payload);
+        console.log('[Analytics] Posting comment (localhost/dev)', payload);
     }
     return (await fetch(getApiEndpoint(), {
         method: "POST",
