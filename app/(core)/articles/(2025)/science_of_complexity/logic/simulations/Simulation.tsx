@@ -3,7 +3,7 @@
 import { createRef, JSX, useState } from "react";
 import { SimulationCanvas } from "./SimulationCanvas";
 import { SimulationControls } from "./Sliders";
-import "./Simulation.css";
+import styles from "./Simulation.module.css";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import logError from "../api_manager";
 import { useIsVisible } from "../utils";
@@ -36,10 +36,10 @@ export function Simulation(props: {
 
     return <>
         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
-            <div className="simulation-container" ref={simulationRef}>
-                {props.description && <div className="simulation-description">
-                    <div className="simulation-description-title">{props.title}</div>
-                    <div className="simulation-description-content">{props.description}</div>
+            <div className={styles['simulation-container']} ref={simulationRef}>
+                {props.description && <div className={styles['simulation-description']}>
+                    <div className={styles['simulation-description-title']}>{props.title}</div>
+                    <div className={styles['simulation-description-content']}>{props.description}</div>
                 </div>}
                 <SimulationCanvas aspectRatio={props.aspectRatio} canvasRef={props.canvasRef} is2D={props.is2D} visible={visible}>
                     {props.simulation}

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Separator } from "../logic/text/TextEffects";
-import "./CommentsForm.css";
+import styles from "./CommentsForm.module.css";
 import logError, { logComment } from "../logic/api_manager";
 
 export function CommentsForm() {
@@ -54,10 +54,10 @@ export function CommentsForm() {
     }
 
     return <>
-        <div className="comments-g-container">
+        <div className={styles['comments-g-container']}>
             <Separator />
-            <div className="comments-container">
-                <form className="comments-form" onSubmit={handleSubmit}>
+            <div className={styles['comments-container']}>
+                <form className={styles['comments-form']} onSubmit={handleSubmit}>
                     <input type="text" id="comments-name" placeholder="Name"
                         value={name}
                         onChange={e => setName(e.target.value)} />
@@ -79,13 +79,13 @@ export function CommentsForm() {
                     />
                     <button
                         type="submit"
-                        className={emailError || (message && message.type === "error") ? "error" : ""}
+                        className={emailError || (message && message.type === "error") ? styles['error'] : ""}
                         disabled={sending}
                     >
                         {sending ? "Sending..." : "Contact me"}
                     </button>
                     {message && (
-                        <div className={`comments-message comments-${message.type}`} role="alert">
+                        <div className={styles[`comments-message comments-${message.type}`]} role="alert">
                             {message.text}
                         </div>
                     )}

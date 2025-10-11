@@ -5,7 +5,7 @@
     background-color: #ffffff;
     color: #333;
     font-weight: 300;
-    font-family: 'Railway', 'Montserrat', Arial;
+    font-family: Arial;
     text-align: justify;
     font-size: 1.2em;
     line-height: 1.7em;
@@ -21,6 +21,10 @@
     text-decoration: none;
 }
 
+.science_of_complexity li {
+    margin: 17px 0;
+}
+
 .science_of_complexity a:hover {
     text-decoration: underline;
 }
@@ -30,42 +34,34 @@
     overflow-y: hidden;
 }
 
-.texcolor-magnet,
-.text-color-magnet {
+.soc-texcolor-magnet {
     color: #aa51df;
 }
 
-.texcolor-magnets-slider,
-.text-color-magnets-slider {
+.soc-texcolor-magnets-slider {
     color: #746cc0;
 }
 
-.texcolor-temperature,
-.text-color-temperature {
+.soc-texcolor-temperature {
     color: #6a5ff7;
 }
 
-.texcolor-electron,
-.text-color-electron {
+.soc-texcolor-electron {
     color: #e9b109;
 }
 
-.texcolor-magnet-north,
-.text-color-magnet-north {
+.soc-texcolor-magnet-north {
     color: #ff3235;
 }
 
-.texcolor-magnet-south,
-.text-color-magnet-south {
+.soc-texcolor-magnet-south {
     color: #2939e2;
 }
 
-.texcolor-particle,
-.text-color-particle {
+.soc-texcolor-particle {
     color: #1ea2ee;
 }
 
-.texcolor-coupling,
-.text-color-coupling {
+.soc-texcolor-coupling {
     color: #12a02a;
 }

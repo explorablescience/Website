@@ -96,6 +96,7 @@
     padding: 3px 0;
     border-radius: 4px 4px 0 0;
     font-size: 1.0em;
+    font-weight: bold;
 }
 .more-informations-icon {
     height: fit-content;
@@ -244,4 +245,42 @@
 
 .source-item-content > p {
     margin: -4px 0 25px 15px;
+}.texcolor-magnet,
+.text-color-magnet {
+    color: #aa51df;
+}
+
+.texcolor-magnets-slider,
+.text-color-magnets-slider {
+    color: #746cc0;
+}
+
+.texcolor-temperature,
+.text-color-temperature {
+    color: #6a5ff7;
+}
+
+.texcolor-electron,
+.text-color-electron {
+    color: #e9b109;
+}
+
+.texcolor-magnet-north,
+.text-color-magnet-north {
+    color: #ff3235;
+}
+
+.texcolor-magnet-south,
+.text-color-magnet-south {
+    color: #2939e2;
+}
+
+.texcolor-particle,
+.text-color-particle {
+    color: #1ea2ee;
+}
+
+.texcolor-coupling,
+.text-color-coupling {
+    color: #12a02a;
 }

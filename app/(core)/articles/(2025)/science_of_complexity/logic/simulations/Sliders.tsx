@@ -1,11 +1,11 @@
 'use client'
 
 import { JSX, useCallback, useEffect, useRef, useState } from "react";
-import "./Sliders.css";
+import styles from "./Sliders.module.css";
 
 export function SimulationControls(props: JSX.IntrinsicElements['div']) {
     return (
-        <div className="simulation-controls">
+        <div className={styles['simulation-controls']}>
             {props.children}
         </div>
     );
@@ -95,24 +95,24 @@ export function Slider(props: {
     }, [isDragging, props, updateValueFromEvent]);
 
     return (
-        <div className="simulation-slider"
+        <div className={styles['simulation-slider']}
             onMouseDown={handleMouseDown}>
-            <div className="sim-slider-label"><p style={{ color: props.color || "#447997" }}>{props.label}</p></div>
-            <div className="simulation-slider-bar-container">
+            <div className={styles['sim-slider-label']}><p style={{ color: props.color || "#447997" }}>{props.label}</p></div>
+            <div className={styles['simulation-slider-bar-container']}>
                 <div
-                    className="simulation-slider-bar"
+                    className={styles['simulation-slider-bar']}
                     ref={barRef}
                     onTouchStart={handleTouchStart}>
-                    <div className="sim-slider-left-gutter" style={{ width: `${getPercentage(props.value)}%`, background: props.color || "#447997" }}></div>
-                    <div className="sim-slider-right-gutter" style={{ width: `${100.0 - getPercentage(props.value)}%`, left: `${getPercentage(props.value)}%` }}></div>
+                    <div className={styles['sim-slider-left-gutter']} style={{ width: `${getPercentage(props.value)}%`, background: props.color || "#447997" }}></div>
+                    <div className={styles['sim-slider-right-gutter']} style={{ width: `${100.0 - getPercentage(props.value)}%`, left: `${getPercentage(props.value)}%` }}></div>
                     <div
-                        className="sim-slider-knob"
+                        className={styles['sim-slider-knob']}
                         style={{ left: `${getPercentage(props.value)}%` }}>
-                        <div className="sim-slider-knob-inner" style={{ background: props.color || "#447997" }}></div>
+                        <div className={styles['sim-slider-knob-inner']} style={{ background: props.color || "#447997" }}></div>
                     </div>
                 </div>
             </div>
-            {props.displayValue && <div className="sim-slider-value"><p>{props.value.toFixed(2)}</p></div>}
+            {props.displayValue && <div className={styles['sim-slider-value']}><p>{props.value.toFixed(2)}</p></div>}
         </div>
     );
 }

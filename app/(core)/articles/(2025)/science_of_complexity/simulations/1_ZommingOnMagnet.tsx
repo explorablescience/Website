@@ -5,8 +5,7 @@ import { Magnet3D } from "./models/Magnet";
 import { SimulationControls, Slider } from "../logic/simulations/Sliders";
 import { JSX, useRef, useState } from "react";
 import { SimulationCanvas } from "../logic/simulations/SimulationCanvas";
-import "../logic/simulations/Simulation.css";
-import "./1_ZommingOnMagnet.css";
+import styles from "./1_ZommingOnMagnet.module.css";
 import { SpinsLattice } from "./models/SpinsLattice";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import logError from "../logic/api_manager";
@@ -15,7 +14,7 @@ import { useIsVisible } from "../logic/utils";
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className="error-simulation">
+    return <div className={styles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -23,7 +22,7 @@ function ErrorDOM() {
 function ErrorDOMSmall() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className="error-simulation custom-simulation-error">
+    return <div className={styles['error-simulation custom-simulation-error']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -94,16 +93,16 @@ export function ZoomingOnMagnet(props: { title: string, description: JSX.Element
     });
     return <>
         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
-            <div className="simulation-container" ref={simulationRef}>
-                {props.description && <div className="simulation-description">
-                    <div className="simulation-description-title">{props.title}</div>
-                    <div className="simulation-description-content">{props.description}</div>
+            <div className={styles['simulation-container']} ref={simulationRef}>
+                {props.description && <div className={styles['simulation-description']}>
+                    <div className={styles['simulation-description-title']}>{props.title}</div>
+                    <div className={styles['simulation-description-content']}>{props.description}</div>
                 </div>}
-                <div className="simulation-info-container">
+                <div className={styles['simulation-info-container']}>
                     <SimulationCanvas aspectRatio={"11/9"} show3DIcon={false} customErrorComponent={ErrorDOMSmall} visible={visible}>
                         {simulation}
                     </SimulationCanvas>
-                    <div className="simulation-info-text">
+                    <div className={styles['simulation-info-text']}>
                         <div><p>{props.zoomDataLevel[zoomDescriptionLevel][1]}</p></div>
                     </div>
                 </div>

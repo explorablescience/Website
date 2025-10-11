@@ -2,15 +2,14 @@
 
 import { JSX, useState, createRef, useMemo, useEffect, useRef } from "react";
 import logError from "../logic/api_manager";
-import "./2_FirefliesSynchronisation.css";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { useIsVisible } from "../logic/utils";
-import "./0_HeaderSimulation.css";
+import styles from "./0_HeaderSimulation.module.css";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className="header-error-simulation">
+    return <div className={styles['header-error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -400,8 +399,8 @@ export function HeaderSimulation(): JSX.Element {
     return <>
         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
             <SimulationLogic canvasRef={canvasRef} aspectRatio={aspectRatio} isVisible={visible} />
-            <div className="simulation-header-canvas-container" ref={simulationRef}>
-                <canvas className="simulation-header-canvas" ref={canvasRef} />
+            <div className={styles['simulation-header-canvas-container']} ref={simulationRef}>
+                <canvas className={styles['simulation-header-canvas']} ref={canvasRef} />
             </div>
         </ErrorBoundary>
     </>

@@ -3,14 +3,14 @@
 import * as d3 from "d3";
 import { JSX, useEffect, useMemo, useRef, useState } from "react";
 import logError from "../logic/api_manager";
-import './3_FishGraph.css';
+import styles from './3_FishGraph.module.css';
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { FishSchool } from "./3_FishSchool";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className="error-simulation">
+    return <div className={styles['error-simulation']}>
         <p>Something went wrong with the simulation.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -165,20 +165,20 @@ export function FishGraph(props: { title?: string, description?: JSX.Element }) 
     // HTML Content
     return <>
         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
-            <div className="fish-simulation-container">
-                {props.title && props.description && <div className="simulation-description">
-                    <div className="simulation-description-title">{props.title}</div>
-                    <div className="simulation-description-content">
+            <div className={styles['fish-simulation-container']}>
+                {props.title && props.description && <div className={styles['simulation-description']}>
+                    <div className={styles['simulation-description-title']}>{props.title}</div>
+                    <div className={styles['simulation-description-content']}>
                         {props.description}
                     </div>
                 </div>}
-                <div className="fish-graph-simulation-container">
-                    <div ref={refCanvasParent} className="kuramoto-graph-canvas-container-svg">
+                <div className={styles['fish-graph-simulation-container']}>
+                    <div ref={refCanvasParent} className={styles['kuramoto-graph-canvas-container-svg']}>
                         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
                             <svg width={460} height={400} ref={refCanvas} />
                         </ErrorBoundary>
                     </div>
-                    <div className="fish-graph-canvas-container">
+                    <div className={styles['fish-graph-canvas-container']}>
                         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
                             {fSync }
                         </ErrorBoundary>

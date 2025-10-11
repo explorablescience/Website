@@ -4,7 +4,7 @@ import { JSX, useState, createRef, useMemo, useEffect, useRef } from "react";
 import { Simulation } from "../logic/simulations/Simulation";
 import { Slider } from "../logic/simulations/Sliders";
 import logError from "../logic/api_manager";
-import "./3_FishSchool.css";
+import styles from "./3_FishSchool.module.css";
 
 // Draw an arrow
 function canvasArrow(context: CanvasRenderingContext2D, fromx: number, fromy: number, tox: number, toy: number, r: number) {
@@ -316,8 +316,8 @@ export function FishSchool(props: {
     }, [props.showSliders]);
 
     const controls = <>
-        <div className="fish-custom-check-g-container">
-            <div className="fish-custom-check-container">
+        <div className={styles['fish-custom-check-g-container']}>
+            <div className={styles['fish-custom-check-container']}>
                 <label htmlFor="show-arrows">Arrows</label>
                 <input type="checkbox" checked={!drawFish} onChange={e => setDrawFish(!e.target.checked)} />
             </div>

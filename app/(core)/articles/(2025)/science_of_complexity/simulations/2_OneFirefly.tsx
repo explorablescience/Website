@@ -4,7 +4,6 @@ import { JSX, useState, createRef, useMemo, useEffect, useRef } from "react";
 import { Simulation } from "../logic/simulations/Simulation";
 import { Slider } from "../logic/simulations/Sliders";
 import logError from "../logic/api_manager";
-import "./2_FirefliesSynchronisation.css";
 
 // Draw an arrow
 function canvasArrow(context: CanvasRenderingContext2D, fromx: number, fromy: number, tox: number, toy: number, r: number) {

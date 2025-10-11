@@ -2,7 +2,7 @@ import { Paragraph, Part, Section } from "../logic/text/Article";
 import { IsingSimulation } from "../simulations/1_IsingSimulation";
 import { FirefliesSynchronisation } from "../simulations/2_FirefliesSynchronisation";
 import { FishSchool } from "../simulations/3_FishSchool";
-import "./Conclusion.css";
+import styles from "./Conclusion.module.css";
 import logError from "../logic/api_manager";
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { IColor, Separator, Sources } from "../logic/text/TextEffects";
@@ -13,7 +13,7 @@ import { Magnet } from "./Part1";
 function ConclusionSimulationsDivError() {
     const { resetBoundary } = useErrorBoundary();
 
-    return <div className="error-simulation">
+    return <div className={styles['error-simulation']}>
         <p>Something went wrong with the simulations.</p>
         <button onClick={resetBoundary}>Try again</button>
     </div>;
@@ -21,7 +21,7 @@ function ConclusionSimulationsDivError() {
 
 function ConclusionSimulationsDiv() {
     return <ErrorBoundary FallbackComponent={ConclusionSimulationsDivError} onError={logError}>
-        <div className="conclusion-simulations-div">
+        <div className={styles['conclusion-simulations-div']}>
             <IsingSimulation customT={3.0} />
             <FirefliesSynchronisation omegaActivated={true} showSliders={false} conclusion />
             <FishSchool showSliders={false} conclusion />
@@ -30,7 +30,7 @@ function ConclusionSimulationsDiv() {
 }
 
 export function Conclusion() {
-    return <Part title="Conclusion" className="conclusion-part">
+    return <Part title="Conclusion" className={styles['conclusion-part']}>
         <Section>
             <Paragraph>
                 In this article, we explored three different examples of systems in nature: <Magnet>magnets</Magnet>, <Firefly>fireflies</Firefly> and <Fish>fishes</Fish>. A priori, these systems are very different and do not have much in common. Every individual in a system should behave in a completely <strong>independent</strong> manner, and should have its own specific <i>rules</i> and <i>behavior</i>.

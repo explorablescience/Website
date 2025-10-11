@@ -3,7 +3,7 @@
 import * as d3 from "d3";
 import { JSX, useEffect, useRef, useState } from "react";
 import logError from "../logic/api_manager";
-import './1_IsingMagnetizationGraph.css';
+import styles from './1_IsingMagnetizationGraph.module.css';
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 
 function ErrorDOM() {
@@ -117,7 +117,7 @@ function CanvasSimulation(props: { magnetization: number }): JSX.Element {
     }, [canvasRef, magnetization]);
 
     return <>
-        <canvas className="simulation-canvas" ref={canvasRef} />
+        <canvas className={styles['simulation-canvas']} ref={canvasRef} />
     </>
 }
 
@@ -286,30 +286,30 @@ export function IsingMagnetizationGraph(props: { title?: string, description?: J
     // HTML Content
     return <>
         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
-            <div className="ising-simulation-container">
-                {props.title && props.description && <div className="simulation-description">
-                    <div className="simulation-description-title">{props.title}</div>
-                    <div className="simulation-description-content">
+            <div className={styles['ising-simulation-container']}>
+                {props.title && props.description && <div className={styles['simulation-description']}>
+                    <div className={styles['simulation-description-title']}>{props.title}</div>
+                    <div className={styles['simulation-description-content']}>
                         {props.description}
                     </div>
                 </div>}
-                <div className="ising-graph-simulation-container">
-                    <div className="ising-graph-canvas-container-up">
+                <div className={styles['ising-graph-simulation-container']}>
+                    <div className={styles['ising-graph-canvas-container-up']}>
                         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
                             <CanvasSimulation magnetization={magnetizationValue[0]} />
                         </ErrorBoundary>
                     </div>
-                    <div ref={refCanvasParent} className="ising-graph-canvas-container-svg">
+                    <div ref={refCanvasParent} className={styles['ising-graph-canvas-container-svg']}>
                         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
                             <svg width={460} height={400} ref={refCanvas} />
                         </ErrorBoundary>
                     </div>
-                    <div className="ising-graph-canvas-container-down">
+                    <div className={styles['ising-graph-canvas-container-down']}>
                         <ErrorBoundary FallbackComponent={ErrorDOM} onError={logError}>
                             <CanvasSimulation magnetization={magnetizationValue[1]} />
                         </ErrorBoundary>
                     </div>
-                    <div className="ising-graphs-touch-icon">
+                    <div className={styles['ising-graphs-touch-icon']}>
                         <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <g fill="#aa51df" transform="translate(85.333333, 42.666667)">
                                 <path

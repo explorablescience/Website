@@ -5,7 +5,7 @@ import { Firefly } from "./Part2";
 import { Fish } from "./Part3";
 import author from "./assets/author.png"
 import Image from "next/image";
-import "./Introduction.css"
+import styles from "./Introduction.module.css"
 
 function Widgets() {
     function copyLinkToClipboard() {
@@ -13,17 +13,17 @@ function Widgets() {
     }
 
     return <>
-        <div className="header-widgets">
-            <div className="header-widgets-left">
-                <div className="hwl-photo">
+        <div className={styles['header-widgets']}>
+            <div className={styles['header-widgets-left']}>
+                <div className={styles['hwl-photo']}>
                     <Image src={author} alt="Author" />
                 </div>
-                <div className="hwl-info">
-                    <div className="hwl-info-name">Maxime Dherbécourt</div>
-                    <div className="hwl-info-desc">
-                        <div className="hwl-info-desc-up">
-                            <div className="hwl-info-text">26 August 2025</div>
-                            <a className="hwr-link-up" onClick={() => copyLinkToClipboard()}>
+                <div className={styles['hwl-info']}>
+                    <div className={styles['hwl-info-name']}>Maxime Dherbécourt</div>
+                    <div className={styles['hwl-info-desc']}>
+                        <div className={styles['hwl-info-desc-up']}>
+                            <div className={styles['hwl-info-text']}>26 August 2025</div>
+                            <a className={styles['hwr-link-up']} onClick={() => copyLinkToClipboard()}>
                                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier"></g>
                                     <g id="SVGRepo_tracerCarrier"></g>
@@ -36,10 +36,10 @@ function Widgets() {
                             </a>
                         </div>
                         <span>&bull;</span>
-                        <div className="hwl-info-text">25 minutes read</div>
+                        <div className={styles['hwl-info-text']}>25 minutes read</div>
                         <span>&bull;</span>
-                        <div className="header-widgets-right">
-                            <a className="hwr-link" onClick={() => copyLinkToClipboard()}>
+                        <div className={styles['header-widgets-right']}>
+                            <a className={styles['hwr-link']} onClick={() => copyLinkToClipboard()}>
                                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier"></g>
                                     <g id="SVGRepo_tracerCarrier"></g>

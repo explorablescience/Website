@@ -17,6 +17,7 @@
     background-color: #181818;
     color: white;
     padding: 70px 40px;
+    font-weight: bold;
 }
 @media (max-width: 780px) {
     .part-title {
@@ -48,11 +49,7 @@
     margin: 35px 0;
 }
 @media (max-width: 430px) {
-    .paragraph > ul, ol {
+    .paragraph ul, .paragraph ol {
         padding-inline-start: 10px;
     }
-}
-
-li {
-    margin: 17px 0;
 }
