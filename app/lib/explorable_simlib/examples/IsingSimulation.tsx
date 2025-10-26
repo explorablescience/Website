@@ -1,8 +1,8 @@
 'use client';
 
 import { JSX } from "react";
-import { SimulationInstance, SimContext, RenderContext } from "../src/core/Simulation";
-import { SimulationDOM } from "../src/core/SimulationDOM";
+import { SimulationInstance, SimContext, RenderContext } from "../src/simulation/Simulation";
+import { SimulationDOM } from "../src/simulation/SimulationDOM";
 
 // Helpers
 function computeEnergy(simData: { Nx: number; Ny: number; spins: boolean[] }, index: number, temperature: number): number {
@@ -50,7 +50,7 @@ type State = {
 // Fireflies Simulation
 class Simulation extends SimulationInstance<State> {
     private N = 100;
-    private aspectRatio = 16 / 9;
+    private expectedAspectRatio = 16 / 9;
     private iterationsPerFrame = 3000;
 
     constructor() {
@@ -60,7 +60,7 @@ class Simulation extends SimulationInstance<State> {
     }
 
     init(): State {
-        const [Nx, Ny] = [this.N, Math.floor(this.N / this.aspectRatio)];
+        const [Nx, Ny] = [this.N, Math.floor(this.N / this.expectedAspectRatio)];
         const spins = new Array(Nx * Ny).fill(false).map(() => Math.random() < 0.5 ? true : false);
 
         return { Nx, Ny, spins };
@@ -97,25 +97,22 @@ class Simulation extends SimulationInstance<State> {
     }
 
     render(sim: SimContext, render: RenderContext): void {
-        const ctx = render.ctx;
         const { Nx, Ny, spins } = sim.state as State;
-        const { width, height } = render.size;
 
         // Clear canvas
-        ctx.fillStyle = "white";
-        ctx.clearRect(0, 0, width, height);
+        render.clear();
 
         // Draw spins
-        const epsilon = 1;
-        spins.forEach((spin, i) => {
-            const x = (i % Nx) * (width / Nx);
-            const y = Math.floor(i / Nx) * (height / Ny);
-            if (spin) {
-                ctx.fillStyle = "#ff3235"; // Spin up
-            } else {
-                ctx.fillStyle = "#2939e2"; // Spin down
-            }
-            ctx.fillRect(x, y, width / Nx + epsilon, height / Ny + epsilon);
+        const epsilon = 0.00;
+        spins.forEach((spin, index) => {
+            const posX = ((index % Nx) + 0.5) / Nx;
+            const posY = (Math.floor(index / Nx) + 0.5) / Ny;
+
+            render
+                .rectangle(1.0 / Nx + epsilon, 1.0 / Ny + epsilon)
+                .translate(posX, posY)
+                .fill(spin ? "#ff3235" : "#2939e2")
+                .draw();
         });
     }
 }

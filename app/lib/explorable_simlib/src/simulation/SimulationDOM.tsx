@@ -5,9 +5,10 @@ import { createRef, JSX, Suspense, useEffect, useMemo, useRef, useState } from "
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import { Checkbox, CheckboxParams } from "../controls/Checkbox";
 import { SSlider, SliderParams } from "../controls/Slider";
-import { SimContext, RenderContext, SimulationState, SimulationInstance } from "./Simulation";
+import { SimContext, SimulationState, SimulationInstance } from "./Simulation";
 import { useIsVisible } from "./useIsVisible";
-import styles from "./ISimulation.module.css";
+import styles from "./SimulationDOM.module.css";
+import { Drawer2d } from "../draw/Drawer2d";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
@@ -106,13 +107,21 @@ export function SimulationDOM({ title, description, simulation }: {
             const sinceLastRender = time - lastRenderTime;
             if (sinceLastRender >= 1000 / MAX_RENDER_FPS) {
                 const dt = sinceLastRender / 1000;
-                const renderContext: RenderContext = {
-                    size: { width: cv.width, height: cv.height },
-                    canvas: cv,
-                    ctx,
-                };
+
+                // Clear canvas
                 ctx.clearRect(0, 0, cv.width, cv.height);
-                simulation.render({ t: time / 1000, dt, controls: simulation.controlValues, state: state.current }, renderContext);
+                ctx.fillStyle = "black";
+                ctx.fillRect(0, 0, cv.width, cv.height);
+
+                // Render simulation
+                simulation.render(
+                    { t: time / 1000, dt, controls: simulation.controlValues, state: state.current },
+                    new Drawer2d({
+                        context: ctx,
+                        size: { width, height },
+                        aspectRatio: width / height
+                    })
+                );
                 lastRenderTime = time;
             }
 

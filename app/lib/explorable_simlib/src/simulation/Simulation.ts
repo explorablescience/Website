@@ -1,9 +1,13 @@
 import { ControlType } from "../controls/Control";
+import { Drawer2d } from "../draw/Drawer2d";
 
 // Define types for simulation state and control values
 export type SimulationState = Record<string, unknown>
 type ControlValuesState = Record<string, number | boolean>;
 type RecordControlType = { type: string } & ControlType;
+
+// Selected RenderContext type from draw module
+export type RenderContext = Drawer2d;
 
 /**
  * Context provided to the simulation during update and render phases.
@@ -17,18 +21,6 @@ export type SimContext = {
     dt: number;
     controls: ControlValuesState;
     state: SimulationState;
-}
-
-/**
- * Context provided to the simulation during the render phase.
- * @property size - Size of the canvas in pixels. Contains width and height properties.
- * @property canvas - The HTMLCanvasElement where the simulation is rendered.
- * @property ctx - The 2D rendering context for the canvas.
- */
-export type RenderContext = {
-    size: { width: number; height: number };
-    canvas: HTMLCanvasElement;
-    ctx: CanvasRenderingContext2D;
 }
 
 /**

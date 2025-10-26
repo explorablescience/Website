@@ -1,8 +1,8 @@
 'use client';
 
 import { JSX } from "react";
-import { SimulationInstance, SimContext, RenderContext } from "../src/core/Simulation";
-import { SimulationDOM } from "../src/core/SimulationDOM";
+import { SimulationInstance, SimContext, RenderContext } from "../src/simulation/Simulation";
+import { SimulationDOM } from "../src/simulation/SimulationDOM";
 
 // Define the state type for the simulation
 // This will hold the position of the object at each time step
@@ -17,9 +17,6 @@ class Simulation extends SimulationInstance<State> {
 
         // Add a slider control to adjust the speed of the object
         this.addControlSlider("v", { value: 1.0, min: 0, max: 2, step: 0.1 }, "Speed");
-
-        // Add a checkbox control to toggle visibility
-        this.addControlCheckbox("visible", true, "Visible");
     }
 
     init(): State {
@@ -32,32 +29,30 @@ class Simulation extends SimulationInstance<State> {
         const v = sim.controls["v"] as number;
 
         // Update position based on velocity (Euler integration)
-        return { pos: [
-            (pos[0] + v * sim.dt) % 1,
-            pos[1]
-        ] };
+        return {
+            pos: [
+                (pos[0] + v * sim.dt) % 1,
+                pos[1]
+            ]
+        };
     }
 
     render(sim: SimContext, render: RenderContext): void {
-        const { ctx, size } = render;
+        // Get the current position from the state
         const { pos } = sim.state as State;
 
-        // Clear canvas
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, size.width, size.height);
+        // Clear canvas with black background (default)
+        render.clear();
 
-        // If not visible, skip the drawing
-        if (!(sim.controls["visible"] as boolean))
-            return;
-
-        // Draw a circle at the current position
-        ctx.fillStyle = "white";
-        ctx.beginPath();
-        ctx.arc(pos[0] * size.width, pos[1] * size.height, 20, 0, Math.PI * 2);
-        ctx.fill();
+        // Draw an ellipse at the current position
+        render
+            .circle()
+            .translate(pos[0], pos[1])
+            .draw();
     }
 }
 
+// The main component to render the simulation. To use it, simply include <SampleSimulation /> in your React app.
 export function SampleSimulation({ title, description }: { title?: string | JSX.Element; description?: string | JSX.Element; }) {
     // Render the simulation using SimulationDOM
     return <SimulationDOM title={title} description={description} simulation={new Simulation()} />;
