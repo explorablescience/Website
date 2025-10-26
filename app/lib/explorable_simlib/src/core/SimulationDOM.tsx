@@ -11,7 +11,6 @@ import styles from "./ISimulation.module.css";
 
 function ErrorDOM() {
     const { resetBoundary } = useErrorBoundary();
-
     return <>
         <div className={styles['error-simulation']}>
             <p>Something went wrong with the simulation.</p>
@@ -21,9 +20,16 @@ function ErrorDOM() {
 }
 
 function LoaderDOM() {
-    return <div className={styles['loading-simulation']}>Loading simulation in progress...</div>
+    return <div className={styles['loading-simulation']}>Loading simulation...</div>
 }
 
+/**
+ * Renders a simulation instance within a DOM structure, including canvas and controls.
+ * @param title Title of the simulation. Can be a string or JSX element.
+ * @param description Short description of the simulation. Can be a string or JSX element. Usually, wrapped in a <Paragraph>.
+ * @param simulation The simulation instance to render.
+ * @returns A JSX element containing the simulation DOM structure.
+ */
 export function SimulationDOM({ title, description, simulation }: {
     title?: string | JSX.Element;
     description?: string | JSX.Element;
@@ -33,7 +39,7 @@ export function SimulationDOM({ title, description, simulation }: {
     const [visible, setVisible] = useState(false);
     useIsVisible(simulationContainerRef, (v) => setVisible(v));
 
-    // Setup controls
+    // Create controls and bind their events to the simulation instance
     const controls = simulation.controlsType.map((control) => <div key={control.id} style={{ marginBottom: '8px' }}>
         {/* Render control based on its type */}
         {control.type === 'slider' ? (
@@ -74,7 +80,6 @@ export function SimulationDOM({ title, description, simulation }: {
         // Performance settings
         const MAX_UPDATE_FPS = 120;
         const MAX_RENDER_FPS = 60;
-
         let lastTime = performance.now();
         let lastUpdateTime = lastTime;
         let lastRenderTime = lastTime;
@@ -124,10 +129,13 @@ export function SimulationDOM({ title, description, simulation }: {
     return <>
         <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
             <div id={`simulation-container-${simulation.id}`} className={styles['simulation-container']} ref={simulationContainerRef}>
+                {/* Description */}
                 {description && <div className={styles['simulation-description']}>
                     <div className={styles['simulation-description-title']}>{title}</div>
                     <div className={styles['simulation-description-content']}>{description}</div>
                 </div>}
+
+                {/* Canvas */}
                 <ErrorBoundary FallbackComponent={ErrorDOM} onError={onReactError}>
                     <Suspense fallback={<LoaderDOM />}>
                         <div className={styles['simulation-canvas-container']} style={{ aspectRatio: '16/9' }}>
@@ -135,6 +143,8 @@ export function SimulationDOM({ title, description, simulation }: {
                         </div>
                     </Suspense>
                 </ErrorBoundary>
+
+                {/* Controls */}
                 <div id={`simulation-controls-${simulation.id}`}>
                     {controls}
                 </div>
