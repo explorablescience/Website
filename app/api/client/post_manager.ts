@@ -132,7 +132,8 @@ export async function postUserInformations() {
 
     // Send report to server
     if (isLocalhost()) {
-        console.log('[Analytics] Posting user data (localhost/dev)', payload);
+        console.log('[Analytics] Posting user data disregarded (localhost/dev)', payload);
+        return;
     }
     fetch(getApiEndpoint(), {
         method: "POST",
@@ -174,7 +175,8 @@ export async function postError(error: Error, info?: ErrorInfo) {
 
     // Send report to server
     if (isLocalhost()) {
-        console.log('[Analytics] Posting error report (localhost/dev)', payload);
+        console.log('[Analytics] Posting error report disregarded (localhost/dev)', payload);
+        return;
     }
     fetch(getApiEndpoint(), {
         method: "POST",
@@ -207,7 +209,8 @@ export async function postComment(name: string, email: string, message: string):
 
     // Send report to server
     if (isLocalhost()) {
-        console.log('[Analytics] Posting comment (localhost/dev)', payload);
+        console.log('[Analytics] Posting comment disregarded (localhost/dev)', payload);
+        return true;
     }
     return (await fetch(getApiEndpoint(), {
         method: "POST",
