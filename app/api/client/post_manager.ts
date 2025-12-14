@@ -155,7 +155,6 @@ export async function postError(error: Error, info?: ErrorInfo) {
             message: error.message,
             cause: error.cause,
             stack: error.stack,
-            digest: info?.digest || "",
             componentStack: info?.componentStack || ""
         };
     } catch { }
