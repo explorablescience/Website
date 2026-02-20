@@ -1,4 +1,6 @@
-<p style="font-size: 30px; font-weight: bold;"><img src="public/imgs/logo.png" alt="ExplorableScience logo" style="max-width: 38px; display: inline; margin-right: 8px; vertical-align: middle;"> ExplorableScience</p>
+![ExplorableScience Logo](public/imgs/og-image.png)
+
+# Explorable Science Website
 
 **ExplorableScience** is the main public site for explorable science. It combines long-form articles and interactive simulations (*explorables*) to help users learn about scientific concepts through exploration and engagement. The site is built with Next.js using the App Router architecture, organized into route groups for the homepage and core content.
 
