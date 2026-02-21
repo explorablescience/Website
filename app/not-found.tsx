@@ -4,12 +4,9 @@ import Header from './components/header/header'
 import Button from './components/ui/buttons/button'
 import styles from './error.module.css'
 import { inter } from './fonts'
-import logger from './api/client/logger';
 import HeaderAnimation from './components/header/header_animation'
 
 export default function NotFound() {
-    logger.error(new Error('404 - Page Not Found'));
-
     return <>
         <HeaderAnimation small />
 
