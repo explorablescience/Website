@@ -24,7 +24,7 @@ export default function Home() {
                         top: document.getElementById('simulations')?.offsetTop, behavior: 'smooth'
                     })
                 }} padding='25' size='standard' />
-                <Button content='About me' link='/about' size='standard' />
+                <Button content='About me' link='https://mdherbecourt.dev' size='standard' />
             </div>
         </Header>
 
