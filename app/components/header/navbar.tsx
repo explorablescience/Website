@@ -22,8 +22,8 @@ export default function Navbar({small}: { small?: boolean }) {
                     <Link href="/simulations">
                         <p>Simulations</p>
                     </Link>
-                    <Link href="/about">
-                        <p>About</p>
+                    <Link href="https://mdherbecourt.dev" target="_blank" rel="noopener noreferrer">
+                        <p>About Me</p>
                     </Link>
                 </div>
             </div>

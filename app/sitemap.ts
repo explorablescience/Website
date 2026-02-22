@@ -19,10 +19,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         {
             url: `${url}/simulations`,
             priority: 0.4,
-        },
-        {
-            url: `${url}/about`,
-            priority: 0.2,
         }
     ];
 
